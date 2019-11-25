@@ -1,10 +1,28 @@
-html, body, .app{
+$mainTextColor: black;
+
+$secondaryColor: orange;
+$bgColor: lightblue;
+
+html, body, #root, .fullSizeContainer{
   height: 100%;
   width: 100%;
 }
 
+.overflowHidden{
+  overflow: hidden;
+}
+
+.overflowAuto{
+  overflow: auto;
+}
+
 .margin0Auto{
   margin: 0 auto;
+}
+
+.flexColumn{
+  display: flex;
+  flex-direction: column;
 }
 
 .centerAll{
@@ -29,4 +47,21 @@ li{
 .inner{
   max-width: 70rem;
   margin: 0 auto;
+}
+
+
+/* END BASE CLASSES */
+
+#nav{
+  height: 3rem;
+  background-color: $secondaryColor;
+}
+
+.flex1{
+  flex: 1;
+}
+
+#downloader{
+  height: 100%;
+  background-color: $bgColor;
 }

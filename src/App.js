@@ -1,13 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navigation from './components/Navigation';
+import Downloader from './components/Downloader';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-
-      </header>
+    <div className="fullSizeContainer flexColumn overflowHidden">
+      <Navigation/>
+      <main className="flex1 overflowAuto">
+        <Downloader/>
+      </main>
     </div>
   );
 }

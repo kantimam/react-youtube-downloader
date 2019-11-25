@@ -1,0 +1,74 @@
+html, body, #root, .fullSizeContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
+.overflowAuto {
+  overflow: auto;
+}
+
+.margin0Auto {
+  margin: 0 auto;
+}
+
+.flexColumn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.centerAll {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.textUpper {
+  text-transform: uppercase;
+}
+
+.undecoratedLink {
+  color: black;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.inner {
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+/* END BASE CLASSES */
+#nav {
+  height: 3rem;
+  background-color: orange;
+}
+
+.flex1 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#downloader {
+  height: 100%;
+  background-color: lightblue;
+}
+/*# sourceMappingURL=App.css.map */

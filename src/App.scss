@@ -1,0 +1,32 @@
+html, body, .app{
+  height: 100%;
+  width: 100%;
+}
+
+.margin0Auto{
+  margin: 0 auto;
+}
+
+.centerAll{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textUpper{
+  text-transform: uppercase;
+}
+
+.undecoratedLink{
+  color: $mainTextColor;
+  text-decoration: none;
+}
+
+li{
+  list-style: none;
+}
+
+.inner{
+  max-width: 70rem;
+  margin: 0 auto;
+}

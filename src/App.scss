@@ -2,6 +2,7 @@ $mainTextColor: black;
 
 $secondaryColor: orange;
 $bgColor: lightblue;
+$contentMaxWidth: 94%;
 
 html, body, #root, .fullSizeContainer{
   height: 100%;
@@ -53,6 +54,10 @@ li{
   margin: 0 auto;
 }
 
+.flex1{
+  flex: 1;
+}
+
 
 /* END BASE CLASSES */
 
@@ -71,9 +76,7 @@ main{
   height: 100%;
 }
 
-.flex1{
-  flex: 1;
-}
+
 
 #downloader{
   height: 100%;
@@ -84,3 +87,33 @@ main{
   background-color: red;
   height: 100%;
 }
+
+/* SEARCHBAR */
+
+#searchbar{
+  display: block;
+  height: 2.4rem;
+  overflow: hidden;
+  width: 34rem;
+  max-width: $contentMaxWidth;
+  display: flex;
+  input{
+    box-sizing: border-box;
+    height: 100%;
+    border: none;
+  }
+}
+
+#searchText{
+  padding-left: 1rem;
+  flex: 1;
+}
+#searchSubmit{
+  padding: 0 2rem;
+  &:hover{
+    background-color: orange;
+  }
+}
+
+
+/* END SEARCHBAR */

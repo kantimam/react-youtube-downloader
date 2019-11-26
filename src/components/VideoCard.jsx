@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormatSelect = () => {
+const VideoCard = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const FormatSelect = () => {
     )
 }
 
-export default FormatSelect
+export default VideoCard

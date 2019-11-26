@@ -5,10 +5,11 @@ import Downloader from './components/Downloader';
 
 function App() {
   return (
-    <div className="fullSizeContainer flexColumn overflowHidden">
+    <div className="fullSizeContainer borderBox">
       <Navigation/>
-      <main className="flex1 overflowAuto">
+      <main>
         <Downloader/>
+        <div id="test"></div>
       </main>
     </div>
   );

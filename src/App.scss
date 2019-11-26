@@ -20,6 +20,10 @@ html, body, #root, .fullSizeContainer{
   margin: 0 auto;
 }
 
+.borderBox{
+  box-sizing: border-box;
+}
+
 .flexColumn{
   display: flex;
   flex-direction: column;
@@ -54,7 +58,17 @@ li{
 
 #nav{
   height: 3rem;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   background-color: $secondaryColor;
+}
+
+main{
+  box-sizing: border-box;
+  padding-top: 3rem;
+  height: 100%;
 }
 
 .flex1{
@@ -64,4 +78,9 @@ li{
 #downloader{
   height: 100%;
   background-color: $bgColor;
+}
+
+#test{
+  background-color: red;
+  height: 100%;
 }

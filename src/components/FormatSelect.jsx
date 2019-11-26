@@ -2,7 +2,7 @@ import React from 'react'
 
 const FormatSelect = () => {
     return (
-        <div>
+        <div id="formatSelect">
             
         </div>
     )

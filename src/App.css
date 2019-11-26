@@ -3,6 +3,11 @@ html, body, #root, .fullSizeContainer {
   width: 100%;
 }
 
+h1, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
 .overflowHidden {
   overflow: hidden;
 }
@@ -85,7 +90,7 @@ main {
 
 #downloader {
   height: 100%;
-  background-color: lightblue;
+  /* background-color: $bgColor; */
 }
 
 #test {
@@ -98,7 +103,7 @@ main {
   display: block;
   height: 2.4rem;
   overflow: hidden;
-  width: 34rem;
+  width: 36rem;
   max-width: 94%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -128,4 +133,37 @@ main {
 }
 
 /* END SEARCHBAR */
+/* VIDEOVIEW */
+#videoView {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#videoView h3 {
+  margin: 0.2rem 0 0.6rem 0;
+}
+
+#videoCard {
+  padding: 0.1rem 0.1rem 0.8rem 0.1rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid black;
+  width: 30%;
+  /* min-width: 24rem; */
+}
+
+#videoCard img {
+  width: 100%;
+}
+
+#formatSelect {
+  width: 50%;
+  min-width: 30rem;
+  background-color: red;
+}
 /*# sourceMappingURL=App.css.map */

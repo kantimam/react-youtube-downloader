@@ -1,13 +1,18 @@
 import React from 'react'
 
-const FormatItem = () => {
+const FormatItem = ({ type, quality, url, downloadUrl }) => {
     return (
         <tr id="formatItem">
-            <td>MP4</td>
-            <td>720p</td>
+            <td id="format">{type}</td>
+            <td id="quality">{quality}</td>
+            <td className="centerText">
+                <a href={url}>
+                    SOURCE
+                </a>
+            </td>
             <td className="pointer" id="download">
                 DOWNLOAD
-            </td>
+                </td>
         </tr>
     )
 }

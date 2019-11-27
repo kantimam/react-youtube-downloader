@@ -41,6 +41,10 @@ h1, h3, p{
   justify-content: center;
 }
 
+.centerText{
+  text-align: center;
+}
+
 .textUpper{
   text-transform: uppercase;
 }
@@ -110,8 +114,12 @@ main{
   max-width: $contentMaxWidth;
   display: flex;
   border-radius: 0.6rem;
+  border-top: 1px groove rgb(196, 64, 223);
+  border-bottom: 1px groove rgb(196, 64, 223);
+  border-left: 1px groove rgb(196, 64, 223);
+
   &:focus-within{
-    border: 1px solid black;
+    box-shadow: 2px 2px 20px 6px rgb(196, 64, 223);
   }
   input{
     box-sizing: border-box;
@@ -154,7 +162,6 @@ main{
 #videoCard{
   padding: 0.1rem 0.1rem 0.8rem 0.1rem;
   box-sizing: border-box;
-  border: 1px solid black;
   max-width: 28rem;
   min-width: 24rem;
   img{
@@ -176,17 +183,12 @@ main{
 
 #formatItem{
   overflow: hidden;
-
   height: 2rem;
-  #format{
-    background-color: blue;
-    /* flex: 1; */
-    min-width: 10rem;
+
+  #format, #quality{
+    padding-left: 0.4rem;
   }
-  #quality{
-    min-width: 10rem;
-    background-color: lightblue
-  }
+  
   #download{
     text-align: center;
     border-radius: 0.6rem;

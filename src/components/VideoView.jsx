@@ -21,7 +21,7 @@ const VideoView = ({match}) => {
     return (
         <div id="videoView" className="inner">
             <VideoCard thumbnail={video.thumbnail} title={video.title} length={video.length}/>
-            <FormatSelect/>
+            <FormatSelect formatList={video.formats}/>
         </div>
     )
 }

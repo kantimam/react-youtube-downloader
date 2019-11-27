@@ -47,6 +47,10 @@ h1, h3, p {
           justify-content: center;
 }
 
+.centerText {
+  text-align: center;
+}
+
 .textUpper {
   text-transform: uppercase;
 }
@@ -117,10 +121,14 @@ main {
   display: -ms-flexbox;
   display: flex;
   border-radius: 0.6rem;
+  border-top: 1px groove #c440df;
+  border-bottom: 1px groove #c440df;
+  border-left: 1px groove #c440df;
 }
 
 #searchbar:focus-within {
-  border: 1px solid black;
+  -webkit-box-shadow: 2px 2px 20px 6px #c440df;
+          box-shadow: 2px 2px 20px 6px #c440df;
 }
 
 #searchbar input {
@@ -169,7 +177,6 @@ main {
   padding: 0.1rem 0.1rem 0.8rem 0.1rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border: 1px solid black;
   max-width: 28rem;
   min-width: 24rem;
 }
@@ -197,15 +204,8 @@ main {
   height: 2rem;
 }
 
-#formatItem #format {
-  background-color: blue;
-  /* flex: 1; */
-  min-width: 10rem;
-}
-
-#formatItem #quality {
-  min-width: 10rem;
-  background-color: lightblue;
+#formatItem #format, #formatItem #quality {
+  padding-left: 0.4rem;
 }
 
 #formatItem #download {

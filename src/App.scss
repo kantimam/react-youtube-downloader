@@ -1,6 +1,6 @@
 $mainTextColor: black;
 
-$secondaryColor: orange;
+$secondaryColor: rgb(196, 64, 223);
 $bgColor: lightblue;
 $contentMaxWidth: 94%;
 
@@ -63,6 +63,10 @@ li{
   flex: 1;
 }
 
+.pointer{
+  cursor: pointer;
+}
+
 
 /* END BASE CLASSES */
 
@@ -96,12 +100,19 @@ main{
 /* SEARCHBAR */
 
 #searchbar{
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  box-sizing: border-box;
   display: block;
   height: 2.4rem;
   overflow: hidden;
   width: 36rem;
   max-width: $contentMaxWidth;
   display: flex;
+  border-radius: 0.6rem;
+  &:focus-within{
+    border: 1px solid black;
+  }
   input{
     box-sizing: border-box;
     height: 100%;
@@ -114,9 +125,13 @@ main{
   flex: 1;
 }
 #searchSubmit{
+  border-radius: 0.6rem;
+  background-color: rgb(196, 64, 223);
+  color: white;
   padding: 0 2rem;
+  font-weight: bold;
+  transition: transform 0.4s;
   &:hover{
-    background-color: orange;
   }
 }
 
@@ -140,15 +155,47 @@ main{
   padding: 0.1rem 0.1rem 0.8rem 0.1rem;
   box-sizing: border-box;
   border: 1px solid black;
-  width: 30%;
-  /* min-width: 24rem; */
+  max-width: 28rem;
+  min-width: 24rem;
   img{
     width: 100%;
   }
 }
 
 #formatSelect{
-  width: 50%;
-  min-width: 30rem;
-  background-color: red;
+  min-width: 28rem;
+  background-color: rgb(196, 64, 223);
+  #tabSelect{
+    height: 3rem;
+    background-color: blue;
+  }
+  tr{
+    background-color: white;
+  }
+}
+
+#formatItem{
+  overflow: hidden;
+
+  height: 2rem;
+  #format{
+    background-color: blue;
+    /* flex: 1; */
+    min-width: 10rem;
+  }
+  #quality{
+    min-width: 10rem;
+    background-color: lightblue
+  }
+  #download{
+    text-align: center;
+    border-radius: 0.6rem;
+    border: 1px solid blue;
+    background-color: lightgreen;
+    transition: transform 0.4s;
+    &:hover{
+      transform: scale(1.02);
+      box-shadow: 2px 2px 20px 6px rgb(196, 64, 223);
+    }
+  }
 }

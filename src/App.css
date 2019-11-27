@@ -71,6 +71,10 @@ li {
           flex: 1;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 /* END BASE CLASSES */
 #nav {
   height: 3rem;
@@ -78,7 +82,7 @@ li {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: orange;
+  background-color: #c440df;
 }
 
 main {
@@ -100,6 +104,10 @@ main {
 
 /* SEARCHBAR */
 #searchbar {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   display: block;
   height: 2.4rem;
   overflow: hidden;
@@ -108,6 +116,11 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border-radius: 0.6rem;
+}
+
+#searchbar:focus-within {
+  border: 1px solid black;
 }
 
 #searchbar input {
@@ -125,11 +138,15 @@ main {
 }
 
 #searchSubmit {
+  border-radius: 0.6rem;
+  background-color: #c440df;
+  color: white;
   padding: 0 2rem;
-}
-
-#searchSubmit:hover {
-  background-color: orange;
+  font-weight: bold;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
 }
 
 /* END SEARCHBAR */
@@ -153,8 +170,8 @@ main {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: 1px solid black;
-  width: 30%;
-  /* min-width: 24rem; */
+  max-width: 28rem;
+  min-width: 24rem;
 }
 
 #videoCard img {
@@ -162,8 +179,50 @@ main {
 }
 
 #formatSelect {
-  width: 50%;
-  min-width: 30rem;
-  background-color: red;
+  min-width: 28rem;
+  background-color: #c440df;
+}
+
+#formatSelect #tabSelect {
+  height: 3rem;
+  background-color: blue;
+}
+
+#formatSelect tr {
+  background-color: white;
+}
+
+#formatItem {
+  overflow: hidden;
+  height: 2rem;
+}
+
+#formatItem #format {
+  background-color: blue;
+  /* flex: 1; */
+  min-width: 10rem;
+}
+
+#formatItem #quality {
+  min-width: 10rem;
+  background-color: lightblue;
+}
+
+#formatItem #download {
+  text-align: center;
+  border-radius: 0.6rem;
+  border: 1px solid blue;
+  background-color: lightgreen;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+}
+
+#formatItem #download:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+  -webkit-box-shadow: 2px 2px 20px 6px #c440df;
+          box-shadow: 2px 2px 20px 6px #c440df;
 }
 /*# sourceMappingURL=App.css.map */

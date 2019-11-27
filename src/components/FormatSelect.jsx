@@ -1,10 +1,16 @@
 import React from 'react'
+import FormatItem from './FormatItem'
 
 const FormatSelect = () => {
     return (
-        <div id="formatSelect">
-            
-        </div>
+        <table id="formatSelect">
+            <tr id="tableHeader">
+                <th>FORMAT</th>
+                <th>QUALITY</th>
+                <th>DOWNLOAD</th>
+            </tr>
+            <FormatItem/>
+        </table>
     )
 }
 

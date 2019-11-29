@@ -187,7 +187,6 @@ main {
 
 #formatSelect {
   min-width: 28rem;
-  background-color: #c440df;
 }
 
 #formatSelect #tabSelect {
@@ -196,6 +195,43 @@ main {
 }
 
 #formatSelect tr {
+  background-color: white;
+}
+
+#formatSelect table {
+  width: 100%;
+  background-color: #c440df;
+}
+
+#tabSwitch {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#tabSwitch div {
+  cursor: pointer;
+  width: 33%;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #c440df;
+  border-bottom: none;
+  border-radius: 0.4rem 0.4rem 0 0;
+  background-color: lightgrey;
+  font-weight: bold;
+  padding: 0.2rem 0;
+}
+
+#tabSwitch .inactiveTab {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
+
+#tabSwitch .activeTab {
   background-color: white;
 }
 

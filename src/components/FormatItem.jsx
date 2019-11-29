@@ -10,9 +10,9 @@ const FormatItem = ({ type, quality, url, downloadUrl }) => {
                     SOURCE
                 </a>
             </td>
-            <td className="pointer" id="download">
-                DOWNLOAD
-                </td>
+            <td className="pointer">
+               <div id="download">DOWNLOAD</div> 
+            </td>
         </tr>
     )
 }

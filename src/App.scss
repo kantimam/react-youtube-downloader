@@ -171,13 +171,42 @@ main{
 
 #formatSelect{
   min-width: 28rem;
-  background-color: rgb(196, 64, 223);
   #tabSelect{
     height: 3rem;
     background-color: blue;
   }
   tr{
     background-color: white;
+  }
+  table{
+    width: 100%;
+    background-color: rgb(196, 64, 223);
+  }
+
+}
+
+
+#tabSwitch{
+  display: flex;
+  justify-content: space-between;
+  div{
+    cursor: pointer;
+    width: 33%;
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid $secondaryColor;
+    border-bottom: none;
+    border-radius: 0.4rem 0.4rem 0 0;
+    background-color: lightgrey;
+    font-weight: bold;
+    padding: 0.2rem 0;
+  }
+  .inactiveTab{
+    transform: scale(0.98);
+  }
+  .activeTab{
+    background-color: white;
+
   }
 }
 

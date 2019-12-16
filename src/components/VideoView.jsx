@@ -19,7 +19,7 @@ const VideoView = ({match}) => {
     if(error) return <div id="error">error</div>
     if(!video) return <Loading/>
     return (
-        <div id="videoView" className="inner">
+        <div id="videoView">
             <VideoCard thumbnail={video.thumbnail} title={video.title} length={video.length}/>
             <FormatSelect formatList={video.formats}/>
         </div>

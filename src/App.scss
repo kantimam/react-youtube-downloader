@@ -4,77 +4,84 @@ $secondaryColor: rgb(196, 64, 223);
 $bgColor: lightblue;
 $contentMaxWidth: 94%;
 
-html, body, #root, .fullSizeContainer{
+html,
+body,
+#root,
+.fullSizeContainer {
   height: 100%;
   width: 100%;
 }
 
-h1, h3, p{
+h1,
+h3,
+p {
   margin: 0;
   padding: 0;
 }
 
-.overflowHidden{
+.overflowHidden {
   overflow: hidden;
 }
 
-.overflowAuto{
+.overflowAuto {
   overflow: auto;
 }
 
-.margin0Auto{
+.margin0Auto {
   margin: 0 auto;
 }
 
-.borderBox{
+.borderBox {
   box-sizing: border-box;
 }
 
-.flexColumn{
+.flexColumn {
   display: flex;
   flex-direction: column;
 }
 
-.centerAll{
+.centerAll {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.centerText{
+.centerText {
   text-align: center;
 }
 
-.textUpper{
+.textUpper {
   text-transform: uppercase;
 }
 
-.undecoratedLink{
+.undecoratedLink {
   color: $mainTextColor;
   text-decoration: none;
 }
 
-li{
+li {
   list-style: none;
 }
 
-.inner{
-  max-width: 70rem;
+.inner {
+  max-width: $contentMaxWidth;
+  width: 70rem;
   margin: 0 auto;
 }
 
-.flex1{
+.flex1 {
   flex: 1;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
 
 /* END BASE CLASSES */
 
-#nav{
+#nav {
+  z-index: 3;
   height: 3rem;
   width: 100%;
   position: fixed;
@@ -83,7 +90,8 @@ li{
   background-color: $secondaryColor;
 }
 
-main{
+main {
+  z-index: 1;
   box-sizing: border-box;
   padding-top: 3rem;
   height: 100%;
@@ -92,56 +100,64 @@ main{
 
 
 
-#downloader{
-  height: 100%;
+#downloader {
+  /* height: 100%; */
   /* background-color: $bgColor; */
 }
 
-#test{
-  background-color: red;
-  height: 100%;
+#test {
+  /* background-color: red;
+  height: 100%; */
+}
+
+#banner{
+  margin-top: 6rem;
 }
 
 /* SEARCHBAR */
 
-#searchbar{
+#searchbar {
   margin-top: 4rem;
+  /* margin-top: 2rem; */
   margin-bottom: 4rem;
   box-sizing: border-box;
   display: block;
   height: 2.4rem;
   overflow: hidden;
-  width: 36rem;
-  max-width: $contentMaxWidth;
+  width: 50rem;
+  max-width: 100%;
   display: flex;
   border-radius: 0.6rem;
-  border-top: 1px groove rgb(196, 64, 223);
+  /* border-top: 1px groove rgb(196, 64, 223);
   border-bottom: 1px groove rgb(196, 64, 223);
-  border-left: 1px groove rgb(196, 64, 223);
+  border-left: 1px groove rgb(196, 64, 223); */
+  box-shadow: 2px 2px 20px 6px rgba(197, 64, 223, 0.37);
 
-  &:focus-within{
+  &:focus-within {
     box-shadow: 2px 2px 20px 6px rgb(196, 64, 223);
   }
-  input{
+
+  input {
     box-sizing: border-box;
     height: 100%;
     border: none;
   }
 }
 
-#searchText{
+#searchText {
   padding-left: 1rem;
   flex: 1;
 }
-#searchSubmit{
+
+#searchSubmit {
   border-radius: 0.6rem;
   background-color: rgb(196, 64, 223);
   color: white;
   padding: 0 2rem;
   font-weight: bold;
   transition: transform 0.4s;
-  &:hover{
-  }
+
+  &:hover {}
 }
 
 
@@ -151,35 +167,41 @@ main{
 /* VIDEOVIEW */
 
 
-#videoView{
+#videoView {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
-  h3{
+
+  h3 {
     margin: 0.2rem 0 0.6rem 0;
-  }  
+  }
 }
 
-#videoCard{
+#videoCard {
   padding: 0.1rem 0.1rem 0.8rem 0.1rem;
   box-sizing: border-box;
-  max-width: 28rem;
-  min-width: 24rem;
-  img{
+  width: 28rem;
+  max-width: 100%;
+
+  img {
     width: 100%;
   }
 }
 
-#formatSelect{
-  min-width: 28rem;
-  #tabSelect{
+#formatSelect {
+  width: 28rem;
+  max-width: 100%;
+
+  #tabSelect {
     height: 3rem;
     background-color: blue;
   }
-  tr{
+
+  tr {
     background-color: white;
   }
-  table{
+
+  table {
     width: 100%;
     background-color: rgb(196, 64, 223);
   }
@@ -187,10 +209,11 @@ main{
 }
 
 
-#tabSwitch{
+#tabSwitch {
   display: flex;
   justify-content: space-between;
-  div{
+
+  div {
     cursor: pointer;
     width: 33%;
     text-align: center;
@@ -202,40 +225,118 @@ main{
     font-weight: bold;
     padding: 0.2rem 0;
   }
-  .inactiveTab{
+
+  .inactiveTab {
     transform: scale(0.98);
   }
-  .activeTab{
+
+  .activeTab {
     background-color: white;
 
   }
 }
 
-#formatItem{
+#formatItem {
   overflow: hidden;
   height: 2rem;
 
-  #format, #quality{
+  #format,
+  #quality {
     padding-left: 0.4rem;
   }
-  
-  #download{
+
+  #download {
     text-align: center;
     border-radius: 0.6rem;
     border: 1px solid blue;
     background-color: lightgreen;
     transition: transform 0.4s;
-    &:hover{
+
+    &:hover {
       transform: scale(1.02);
       box-shadow: 2px 2px 20px 6px rgb(196, 64, 223);
     }
   }
 }
 
-#confirmContainer{
+.fullPageAbsolute {
   height: 100%;
   width: 100%;
   position: absolute;
   left: 0;
   top: 0;
+}
+
+#customNameForm {
+  padding: 2rem 1rem;
+}
+
+
+@media only screen and (max-width: 1000px) {
+  #searchbar {
+    /* width: 36rem; */
+  }
+
+  #videoView {
+    margin: 0 auto;
+    width: 52rem;
+
+    #videoCard,
+    #formatSelect {
+      margin: 0 auto;
+      width: 25rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  #downloader {
+    margin-bottom: 4rem;
+  }
+
+  #searchbar {
+    width: 36rem;
+    display: block;
+    height: unset;
+    box-shadow: none;
+    overflow: unset;
+    &:focus-within{
+      box-shadow: unset;
+    }
+
+    #searchText {
+      border-radius: 0.6rem;
+      box-shadow: 2px 2px 20px 6px rgba(197, 64, 223, 0.37);
+      width: 100%;
+      height: 2.4rem;
+      margin-bottom: 0.8rem;
+      &:focus{
+        outline: none;
+        box-shadow: 2px 2px 20px 6px rgb(196, 64, 223);
+      }
+    }
+
+    #searchSubmit {
+      display: block;
+      margin: 0 auto;
+      height: 2.4rem;
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  #videoView {
+    display: block;
+    width: 100%;
+
+    #videoCard,
+    #formatSelect {
+      margin: 0 auto;
+      width: 36rem;
+    }
+  }
+
+  #formatSelect {
+    margin-top: 2rem !important;
+  }
 }

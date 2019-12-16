@@ -1,9 +1,14 @@
-html, body, #root, .fullSizeContainer {
+html,
+body,
+#root,
+.fullSizeContainer {
   height: 100%;
   width: 100%;
 }
 
-h1, h3, p {
+h1,
+h3,
+p {
   margin: 0;
   padding: 0;
 }
@@ -65,7 +70,8 @@ li {
 }
 
 .inner {
-  max-width: 70rem;
+  max-width: 94%;
+  width: 70rem;
   margin: 0 auto;
 }
 
@@ -81,6 +87,7 @@ li {
 
 /* END BASE CLASSES */
 #nav {
+  z-index: 3;
   height: 3rem;
   width: 100%;
   position: fixed;
@@ -90,40 +97,49 @@ li {
 }
 
 main {
+  z-index: 1;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding-top: 3rem;
   height: 100%;
+  position: relative;
 }
 
 #downloader {
-  height: 100%;
+  /* height: 100%; */
   /* background-color: $bgColor; */
 }
 
 #test {
-  background-color: red;
-  height: 100%;
+  /* background-color: red;
+  height: 100%; */
+}
+
+#banner {
+  margin-top: 6rem;
 }
 
 /* SEARCHBAR */
 #searchbar {
   margin-top: 4rem;
+  /* margin-top: 2rem; */
   margin-bottom: 4rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: block;
   height: 2.4rem;
   overflow: hidden;
-  width: 36rem;
-  max-width: 94%;
+  width: 50rem;
+  max-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   border-radius: 0.6rem;
-  border-top: 1px groove #c440df;
-  border-bottom: 1px groove #c440df;
-  border-left: 1px groove #c440df;
+  /* border-top: 1px groove rgb(196, 64, 223);
+  border-bottom: 1px groove rgb(196, 64, 223);
+  border-left: 1px groove rgb(196, 64, 223); */
+  -webkit-box-shadow: 2px 2px 20px 6px rgba(197, 64, 223, 0.37);
+          box-shadow: 2px 2px 20px 6px rgba(197, 64, 223, 0.37);
 }
 
 #searchbar:focus-within {
@@ -163,8 +179,9 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -177,8 +194,8 @@ main {
   padding: 0.1rem 0.1rem 0.8rem 0.1rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  max-width: 28rem;
-  min-width: 24rem;
+  width: 28rem;
+  max-width: 100%;
 }
 
 #videoCard img {
@@ -186,7 +203,8 @@ main {
 }
 
 #formatSelect {
-  min-width: 28rem;
+  width: 28rem;
+  max-width: 100%;
 }
 
 #formatSelect #tabSelect {
@@ -240,7 +258,8 @@ main {
   height: 2rem;
 }
 
-#formatItem #format, #formatItem #quality {
+#formatItem #format,
+#formatItem #quality {
   padding-left: 0.4rem;
 }
 
@@ -260,5 +279,82 @@ main {
           transform: scale(1.02);
   -webkit-box-shadow: 2px 2px 20px 6px #c440df;
           box-shadow: 2px 2px 20px 6px #c440df;
+}
+
+.fullPageAbsolute {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#customNameForm {
+  padding: 2rem 1rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  #searchbar {
+    /* width: 36rem; */
+  }
+  #videoView {
+    margin: 0 auto;
+    width: 52rem;
+  }
+  #videoView #videoCard,
+  #videoView #formatSelect {
+    margin: 0 auto;
+    width: 25rem;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  #downloader {
+    margin-bottom: 4rem;
+  }
+  #searchbar {
+    width: 36rem;
+    display: block;
+    height: unset;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    overflow: unset;
+  }
+  #searchbar:focus-within {
+    -webkit-box-shadow: unset;
+            box-shadow: unset;
+  }
+  #searchbar #searchText {
+    border-radius: 0.6rem;
+    -webkit-box-shadow: 2px 2px 20px 6px rgba(197, 64, 223, 0.37);
+            box-shadow: 2px 2px 20px 6px rgba(197, 64, 223, 0.37);
+    width: 100%;
+    height: 2.4rem;
+    margin-bottom: 0.8rem;
+  }
+  #searchbar #searchText:focus {
+    outline: none;
+    -webkit-box-shadow: 2px 2px 20px 6px #c440df;
+            box-shadow: 2px 2px 20px 6px #c440df;
+  }
+  #searchbar #searchSubmit {
+    display: block;
+    margin: 0 auto;
+    height: 2.4rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  #videoView {
+    display: block;
+    width: 100%;
+  }
+  #videoView #videoCard,
+  #videoView #formatSelect {
+    margin: 0 auto;
+    width: 36rem;
+  }
+  #formatSelect {
+    margin-top: 2rem !important;
+  }
 }
 /*# sourceMappingURL=App.css.map */

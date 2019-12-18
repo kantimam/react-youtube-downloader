@@ -1,8 +1,12 @@
 $mainTextColor: black;
+$lightSecondary: rgba(197, 64, 223, 0.37);
+$secondaryColor: rgb(197, 64, 223);
 
-$secondaryColor: rgb(196, 64, 223);
+$buttonInactive: rgba(197, 64, 223, 0.7);
 $bgColor: lightblue;
 $contentMaxWidth: 94%;
+$navHeight: 3rem;
+
 
 html,
 body,
@@ -54,7 +58,7 @@ p {
   text-transform: uppercase;
 }
 
-.undecoratedLink {
+.undecoratedLink, a {
   color: $mainTextColor;
   text-decoration: none;
 }
@@ -82,23 +86,36 @@ li {
 
 #nav {
   z-index: 3;
-  height: 3rem;
+  height: $navHeight;
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   background-color: $secondaryColor;
+
+  .inner {
+    height: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  a{
+    margin-left: 4rem;
+  }
 }
 
 main {
   z-index: 1;
   box-sizing: border-box;
-  padding-top: 3rem;
+  padding-top: $navHeight;
   height: 100%;
   position: relative;
 }
 
+#logo{
 
+}
 
 #downloader {
   /* height: 100%; */
@@ -110,7 +127,7 @@ main {
   height: 100%; */
 }
 
-#banner{
+#banner {
   margin-top: 6rem;
 }
 
@@ -131,10 +148,10 @@ main {
   /* border-top: 1px groove rgb(196, 64, 223);
   border-bottom: 1px groove rgb(196, 64, 223);
   border-left: 1px groove rgb(196, 64, 223); */
-  box-shadow: 2px 2px 20px 6px rgba(197, 64, 223, 0.37);
+  box-shadow: 2px 2px 20px 6px $lightSecondary;
 
   &:focus-within {
-    box-shadow: 2px 2px 20px 6px rgb(196, 64, 223);
+    box-shadow: 2px 2px 20px 6px $secondaryColor;
   }
 
   input {
@@ -151,7 +168,7 @@ main {
 
 #searchSubmit {
   border-radius: 0.6rem;
-  background-color: rgb(196, 64, 223);
+  background-color: $secondaryColor;
   color: white;
   padding: 0 2rem;
   font-weight: bold;
@@ -203,7 +220,7 @@ main {
 
   table {
     width: 100%;
-    background-color: rgb(196, 64, 223);
+    background-color: $secondaryColor;
   }
 
 }
@@ -247,14 +264,17 @@ main {
 
   #download {
     text-align: center;
-    border-radius: 0.6rem;
-    border: 1px solid blue;
-    background-color: lightgreen;
+    border-radius: 1rem;
+    /* border: 1px solid blue; */
+    background-color: $buttonInactive;
     transition: transform 0.4s;
+    font-weight: bold;
+    padding: 0.2rem 0;
 
     &:hover {
       transform: scale(1.02);
-      box-shadow: 2px 2px 20px 6px rgb(196, 64, 223);
+      background-color: $secondaryColor;
+      box-shadow: 2px 2px 20px 6px $secondaryColor;
     }
   }
 }
@@ -300,19 +320,21 @@ main {
     height: unset;
     box-shadow: none;
     overflow: unset;
-    &:focus-within{
+
+    &:focus-within {
       box-shadow: unset;
     }
 
     #searchText {
       border-radius: 0.6rem;
-      box-shadow: 2px 2px 20px 6px rgba(197, 64, 223, 0.37);
+      box-shadow: 2px 2px 20px 6px $lightSecondary;
       width: 100%;
       height: 2.4rem;
       margin-bottom: 0.8rem;
-      &:focus{
+
+      &:focus {
         outline: none;
-        box-shadow: 2px 2px 20px 6px rgb(196, 64, 223);
+        box-shadow: 2px 2px 20px 6px $secondaryColor;
       }
     }
 

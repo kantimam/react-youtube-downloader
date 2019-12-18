@@ -10,9 +10,9 @@ const FormatSelect = ({ formatList = [] }) => {
     return (
         <div id="formatSelect">
             <div id="tabSwitch">
-                <div onClick={()=>setFormatTab("video")} className={formatTab==="video"?"activeTab":"inactiveTab"}>AUDIO</div>
-                <div onClick={()=>setFormatTab("audio")} className={formatTab==="audio"?"activeTab":"inactiveTab"}>VIDEO</div>
-                <div onClick={()=>setFormatTab("videoOnly")} className={formatTab==="videoOnly"?"activeTab":"inactiveTab"}>AUDIO ONLY</div>
+                <div onClick={()=>setFormatTab("video")} className={formatTab==="video"?"activeTab":"inactiveTab"}>VIDEO</div>
+                <div onClick={()=>setFormatTab("audio")} className={formatTab==="audio"?"activeTab":"inactiveTab"}>AUDIO</div>
+                <div onClick={()=>setFormatTab("videoOnly")} className={formatTab==="videoOnly"?"activeTab":"inactiveTab"}>VIDEO ONLY</div>
             </div>
             <table>
                 <thead>

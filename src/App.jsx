@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter, Route} from 'react-router-dom'
 import Navigation from './components/Navigation';
 import Downloader from './components/Downloader';
+import ConfirmDownload from './components/ConfirmDownload';
+
 
 function App() {
   return (
@@ -11,7 +13,7 @@ function App() {
         <Navigation />
         <main>
           <Downloader />
-          <div id="test"></div>
+          <Route path="/video/:videoUrl/confirm/:selectedFormat" component={ConfirmDownload}/>
         </main>
       </div>
     </BrowserRouter>

@@ -288,7 +288,34 @@ main {
 }
 
 #customNameForm {
-  padding: 2rem 1rem;
+  max-width: $contentMaxWidth;
+  width: 36rem;
+  box-sizing: border-box;
+  padding: 2rem 1rem 1rem 1rem;
+  background-color: white;
+  border: 1px solid $secondaryColor;
+  border-radius: 0.6rem;
+  input{
+    box-sizing: border-box;
+    padding: 0 0.6rem;
+    border-radius: 0.4rem;
+    border: 1px solid $secondaryColor;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .submit{
+    border-radius: 0.4rem;
+    padding: 0.4rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}
+
+#confirmModal{
+  position: fixed;
+  top: 25vh;
+  width: 100%;
+  
 }
 
 

@@ -13,7 +13,7 @@ function App() {
         <Navigation />
         <main>
           <Downloader />
-          <Route path="/video/:videoUrl/confirm/:selectedFormat" component={ConfirmDownload}/>
+          <Route path="/video/:videoUrl/confirm/:itag/:formatType/:initialName" component={ConfirmDownload}/>
         </main>
       </div>
     </BrowserRouter>

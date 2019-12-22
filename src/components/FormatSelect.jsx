@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import FormatList from './FormatList'
 
-const FormatSelect = ({ formatList = [] }) => {
+const FormatSelect = ({ formatList = [], onDownload }) => {
     console.log(Date.now())
     const [formatTab, setFormatTab] = useState("video");
     const audioFormats = formatList.filter((item) => item.type.match(/^audio/))
@@ -24,9 +24,9 @@ const FormatSelect = ({ formatList = [] }) => {
                     </tr>
                 </thead>
 
-                {formatTab === "video" && <FormatList formats={videoFormats} />}
-                {formatTab === "audio" && <FormatList formats={audioFormats} />}
-                {formatTab === "videoOnly" && <FormatList formats={videoOnlyFormats} />}
+                {formatTab === "video" && <FormatList onDownload={onDownload} formatType="video" formats={videoFormats} />}
+                {formatTab === "audio" && <FormatList onDownload={onDownload} formatType="audio" formats={audioFormats} />}
+                {formatTab === "videoOnly" && <FormatList onDownload={onDownload} formatType="video_only" formats={videoOnlyFormats} />}
 
 
             </table>

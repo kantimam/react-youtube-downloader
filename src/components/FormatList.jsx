@@ -1,11 +1,12 @@
 import React from 'react'
 import FormatItem from './FormatItem'
 
-const FormatList = ({formats=[]}) => {
+
+const FormatList = ({formats=[], formatType, onDownload}) => {
     return (
         <tbody>
             {formats.map((item, index) =>
-                <FormatItem {...item} key={`videoFormat_${index}`} />
+                <FormatItem onDownload={onDownload} {...item} formatType={formatType} key={`videoFormat_${index}`} />
             )
             }
         </tbody>

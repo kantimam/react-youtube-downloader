@@ -1,6 +1,8 @@
 import React from 'react'
 
-const FormatItem = ({ type, quality, url, downloadUrl }) => {
+
+
+const FormatItem = ({ type, quality, url, itag, formatType, onDownload }) => {
     return (
         <tr id="formatItem">
             <td id="format">{type}</td>
@@ -11,7 +13,9 @@ const FormatItem = ({ type, quality, url, downloadUrl }) => {
                 </a>
             </td>
             <td className="pointer">
-               <div id="download">DOWNLOAD</div> 
+                <div onClick={()=>onDownload(itag, formatType)} id="download">
+                    DOWNLOAD
+                </div> 
             </td>
         </tr>
     )

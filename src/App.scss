@@ -279,6 +279,12 @@ main {
   }
 }
 
+.hoverShadow:hover{
+  transform: scale(1.02);
+  background-color: $secondaryColor;
+  box-shadow: 2px 2px 20px 6px $secondaryColor;
+}
+
 .fullPageAbsolute {
   height: 100%;
   width: 100%;
@@ -291,7 +297,7 @@ main {
   max-width: $contentMaxWidth;
   width: 36rem;
   box-sizing: border-box;
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 1rem 1rem 1rem 1rem;
   background-color: white;
   border: 1px solid $secondaryColor;
   border-radius: 0.6rem;
@@ -302,12 +308,17 @@ main {
     border: 1px solid $secondaryColor;
     width: 100%;
     margin-bottom: 1rem;
+    font-size: 1rem;
   }
   .submit{
     border-radius: 0.4rem;
     padding: 0.4rem;
     font-size: 1.2rem;
     font-weight: bold;
+    background-color: $secondaryColor;
+  }
+  h1{
+    padding: 0.5rem 0 1rem 0;
   }
 }
 

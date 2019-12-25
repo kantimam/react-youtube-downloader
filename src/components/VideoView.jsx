@@ -4,8 +4,8 @@ import Loading from './Loading'
 import VideoCard from './VideoCard'
 import FormatSelect from './FormatSelect.jsx'
 
-const VideoView = ({match, history}) => {
-    const [video, setVideo]=useState(null);
+const VideoView = ({match, history, video, setVideo}) => {
+    console.log(history)
     const [error, setError]=useState(null);
     const videoUrl=match.params.videoUrl;
     useEffect(() => {
@@ -14,20 +14,24 @@ const VideoView = ({match, history}) => {
         getVideoData(videoUrl).then(data=>setVideo(data)).catch(error=>setError(true));
     }, [videoUrl])
 
-    const onDownload=(itag, formatType)=>{
-        if(video.title && itag && formatType){
-            history.push(`/video/${videoUrl}/confirm/${itag}/${formatType}/${encodeURIComponent(video.title)}`)
+    const onDownload=(itag, container)=>{
+        if(video.title && itag && container){
+            history.push(`/video/${videoUrl}/confirm/${itag}/${container}`)
+        }
+    }
+    const onDownloadMp3=(itag)=>{
+        if(video.title && itag){
+            history.push(`/video/${videoUrl}/confirm_mp3/${itag}`)
         }
     }
 
-    console.log(video)
 
     if(error) return <div id="error">error</div>
     if(!video) return <Loading/>
     return (
         <div id="videoView">
             <VideoCard thumbnail={video.thumbnail} title={video.title} length={video.length}/>
-            <FormatSelect onDownload={onDownload} formatList={video.formats}/>
+            <FormatSelect onDownload={onDownload} onDownloadMp3={onDownloadMp3} formatList={video.formats}/>
         </div>
     )
 }

@@ -2,18 +2,18 @@ import React from 'react'
 
 
 
-const FormatItem = ({ type, quality, url, itag, formatType, onDownload }) => {
+const FormatItem = ({container, type, audioBitrate, qualityLabel, url, itag, onDownload }) => {
     return (
         <tr id="formatItem">
             <td id="format">{type}</td>
-            <td id="quality">{quality}</td>
+            <td id="quality">{qualityLabel? qualityLabel : audioBitrate+" bitrate"}</td>
             <td className="centerText">
                 <a href={url}>
                     SOURCE
                 </a>
             </td>
             <td className="pointer">
-                <div onClick={()=>onDownload(itag, formatType)} id="download">
+                <div onClick={()=>onDownload(itag, container)} id="download">
                     DOWNLOAD
                 </div> 
             </td>

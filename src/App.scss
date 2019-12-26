@@ -100,9 +100,12 @@ li {
     justify-content: space-between;
     align-items: center;
   }
-  a{
-    margin-left: 4rem;
+  section{
+    a{
+      margin-left: 4rem;
+    }
   }
+  
 }
 
 main {
@@ -280,8 +283,8 @@ main {
 }
 
 .hoverShadow:hover{
-  transform: scale(1.02);
-  background-color: $secondaryColor;
+  transform: scale(1.02) !important;
+  background-color: $secondaryColor !important;
   box-shadow: 2px 2px 20px 6px $secondaryColor;
 }
 
@@ -318,7 +321,27 @@ main {
     background-color: $secondaryColor;
   }
   h1{
-    padding: 0.5rem 0 1rem 0;
+    padding: 0 0 1rem 0;
+  }
+  #closeIcon{
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid $secondaryColor;
+    border-radius: 1rem;
+    margin-left: auto;
+    color: white;
+    background-color: $lightSecondary;
+    transition: 0.4s;
+    svg{
+      fill: $secondaryColor;
+    }
+    &:hover{
+      transform: scale(1.2);
+      background-color: $secondaryColor;
+      svg{
+        fill: white;
+      }
+    }
   }
 }
 

@@ -27,7 +27,7 @@ const FormatSelect = ({ formatList = [], onDownload, onDownloadMp3 }) => {
 
                 {formatTab === "video" && <FormatList onDownload={onDownload}  formats={videoFormats} />}
                 {formatTab === "audio" && <FormatList onDownload={onDownload}  formats={audioFormats} />}
-                {formatTab === "mp3" && <FormatList onDownload={onDownloadMp3}  formats={audioFormats} />}
+                {formatTab === "mp3" && <FormatList convertMp3={true} onDownload={onDownloadMp3}  formats={audioFormats} />}
                 {formatTab === "videoOnly" && <FormatList onDownload={onDownload} formats={videoOnlyFormats} />}
 
 

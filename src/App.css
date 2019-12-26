@@ -110,7 +110,7 @@ li {
           align-items: center;
 }
 
-#nav a {
+#nav section a {
   margin-left: 4rem;
 }
 
@@ -303,9 +303,9 @@ main {
 }
 
 .hoverShadow:hover {
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
-  background-color: #c540df;
+  -webkit-transform: scale(1.02) !important;
+          transform: scale(1.02) !important;
+  background-color: #c540df !important;
   -webkit-box-shadow: 2px 2px 20px 6px #c540df;
           box-shadow: 2px 2px 20px 6px #c540df;
 }
@@ -349,7 +349,33 @@ main {
 }
 
 #customNameForm h1 {
-  padding: 0.5rem 0 1rem 0;
+  padding: 0 0 1rem 0;
+}
+
+#customNameForm #closeIcon {
+  height: 2rem;
+  width: 2rem;
+  border: 1px solid #c540df;
+  border-radius: 1rem;
+  margin-left: auto;
+  color: white;
+  background-color: rgba(197, 64, 223, 0.37);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+#customNameForm #closeIcon svg {
+  fill: #c540df;
+}
+
+#customNameForm #closeIcon:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  background-color: #c540df;
+}
+
+#customNameForm #closeIcon:hover svg {
+  fill: white;
 }
 
 #confirmModal {

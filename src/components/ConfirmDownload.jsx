@@ -8,7 +8,7 @@ export const ConfirmDownload = ({match, video, history}) => {
     const download=async (event)=>{
         event.preventDefault();
         setDownload("requested")
-        await downloadVideo(match.params.videoUrl, match.params.itag, name, match.params.container)
+        await downloadVideo(match.params.videoUrl, match.params.itag, name)
         setDownload("finished")
     }
     useEffect(() => {

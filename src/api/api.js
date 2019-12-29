@@ -44,17 +44,23 @@ export async function downloadMp3Fetch(videoUrl, artist, title, coverImage) {
 }
 
 
-export async function downloadVideo(videoUrl, itag, name, container="mp4") {
-  
-  axios({
+export async function downloadVideo(videoUrl, itag, name, progressCallback=(progress)=>console.log(progress)) {
+  getFileSize(videoUrl, itag).then(metadata=>{
+    axios({
       url: `http://localhost/download?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
       method: "GET",
-      responseType: "arraybuffer"
-  }).then((response)=>{
+      responseType: "arraybuffer",
+      onDownloadProgress: (progressEvent) => {
+        let percentCompleted = Math.round((progressEvent.loaded * 100) / metadata.data.size);
+        progressCallback(percentCompleted)
+      },
+    }).then((response)=>{
+      const container=metadata.data.format.container || "mp4"
       saveAs(new Blob([response.data]), name?`${name}.${container}`:`video${Date.now()}.mp4`);
     }).catch(error=>console.log(error))
-
-
+  }).catch(error=>console.log(error))
+   
+  
 }
 
 export async function downloadMp3(videoUrl, itag, name, artist, title, coverImage) {
@@ -62,7 +68,13 @@ export async function downloadMp3(videoUrl, itag, name, artist, title, coverImag
   axios({
       url: `http://localhost/downloadmp3?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
       method: "GET",
-      responseType: "arraybuffer"
+      responseType: "arraybuffer",
+      onDownloadProgress: (progressEvent) => {
+        console.log(progressEvent)
+        /* let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+        console.log(progressEvent.lengthComputable)
+        console.log(percentCompleted); */
+      }
   }).then((response)=>{
       
 
@@ -77,7 +89,11 @@ export async function downloadMp3(videoUrl, itag, name, artist, title, coverImag
       saveAs(blob, name?`${name}.mp3`:`music${Date.now()}.mp3`);
     }).catch(error=>console.log(error))
 
-    
+}
 
-
+async function getFileSize(videoUrl, itag){
+  return axios({
+    url: `http://localhost/getsize?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
+    method: "GET",
+  })
 }

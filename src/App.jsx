@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import './App.css';
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Navigation from './components/Navigation';
 import Downloader from './components/Downloader';
+import YoutubeSearch from './components/YoutubeSearch';
+
 import {ConfirmDownload, ConfirmDownloadMp3} from './components/ConfirmDownload';
 
 
@@ -14,7 +16,10 @@ function App() {
       <div className="fullSizeContainer borderBox">
         <Navigation />
         <main>
-          <Downloader video={video} setVideo={setVideo}/>
+          <Switch>
+            <Route path="/search" render={({history})=><YoutubeSearch history={history} video={video} setVideo={setVideo}/>}/>
+            <Route path="/" render={({history})=><Downloader history={history}/>}/>
+          </Switch> 
           <Route 
             path="/video/:videoUrl/confirm/:itag/:container" 
             render={

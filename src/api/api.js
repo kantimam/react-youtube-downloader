@@ -2,9 +2,11 @@ import ID3Writer from 'browser-id3-writer'
 import {saveAs} from 'file-saver'
 import axios from 'axios'
 const BASEURL = "http://localhost" || "http://82.165.121.77:5000"
+const downloaderUrl=BASEURL+"/ytdl"
+const searchUrl=BASEURL+"/search"
 
 export async function getVideoData(videoUrl) {
-    const response = await fetch(`${BASEURL}/simpleinfo?videolink=${videoUrl}`);
+    const response = await fetch(`${downloaderUrl}/simpleinfo?videolink=${videoUrl}`);
     if (response.status >= 400) throw new Error(response)
     return await response.json();
 
@@ -12,7 +14,7 @@ export async function getVideoData(videoUrl) {
 }
 
 export async function downloadMp3Fetch(videoUrl, artist, title, coverImage) {
-    const response = await fetch(`localhost/downloadmp3?videolink=${videoUrl}`);
+    const response = await fetch(`${downloaderUrl}/downloadmp3?videolink=${videoUrl}`);
     if (response.status !== 200) throw new Error(response)
     /* const arrayBuffer=await response.arrayBuffer();
 
@@ -47,7 +49,7 @@ export async function downloadMp3Fetch(videoUrl, artist, title, coverImage) {
 export async function downloadVideo(videoUrl, itag, name, progressCallback=(progress)=>console.log(progress)) {
   getFileSize(videoUrl, itag).then(metadata=>{
     axios({
-      url: `http://localhost/download?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
+      url: `${downloaderUrl}/download?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
       method: "GET",
       responseType: "arraybuffer",
       onDownloadProgress: (progressEvent) => {
@@ -66,7 +68,7 @@ export async function downloadVideo(videoUrl, itag, name, progressCallback=(prog
 export async function downloadMp3(videoUrl, itag, name, artist, title, coverImage) {
     
   axios({
-      url: `http://localhost/downloadmp3?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
+      url: `${downloaderUrl}/downloadmp3?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
       method: "GET",
       responseType: "arraybuffer",
       onDownloadProgress: (progressEvent) => {
@@ -93,7 +95,7 @@ export async function downloadMp3(videoUrl, itag, name, artist, title, coverImag
 
 async function getFileSize(videoUrl, itag){
   return axios({
-    url: `http://localhost/getsize?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
+    url: `${downloaderUrl}/getsize?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
     method: "GET",
   })
 }

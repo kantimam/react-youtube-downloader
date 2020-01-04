@@ -17,9 +17,9 @@ function App() {
         <Navigation />
         <main>
           <Switch>
-            <Route path="/search" render={({history})=><YoutubeSearch history={history} video={video} setVideo={setVideo}/>}/>
-            <Route path="/" render={({history})=><Downloader history={history}/>}/>
-          </Switch> 
+            <Route path="/search" render={({history})=><YoutubeSearch history={history}/>}/>
+            <Route path="/" render={({history})=><Downloader history={history} video={video} setVideo={setVideo}/>}/>
+          </Switch>
           <Route 
             path="/video/:videoUrl/confirm/:itag/:container" 
             render={

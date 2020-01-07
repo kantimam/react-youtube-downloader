@@ -3,7 +3,7 @@ import VideoListCard from './VideoListCard'
 
 const VideoList = ({videos=[]}) => {
     return (
-        <section>
+        <section id="videoList">
             {videos.map(video=><VideoListCard key={Math.random()} video={video}/>)}
         </section>
     )

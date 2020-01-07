@@ -1,9 +1,7 @@
 import React, {useState} from 'react'
-import { useHistory } from 'react-router-dom'
 
-const Searchbar = ({onSubmit, placeholder="SEARCH FOR YOUTUBE URL"}) => {
-    const { push } = useHistory();
-    const [inputVal, setInputVal]=useState("")
+const Searchbar = ({onSubmit, placeholder="SEARCH FOR YOUTUBE URL", initialValue=""}) => {
+    const [inputVal, setInputVal]=useState(initialValue)
     return (
         <form 
             onSubmit={(event) => {

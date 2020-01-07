@@ -5,8 +5,9 @@ const FormatSelect = ({ formatList = [], onDownload, onDownloadMp3 }) => {
     console.log(Date.now())
     const [formatTab, setFormatTab] = useState("video");
     const audioFormats = formatList.filter((item) => item.type.match(/^audio/))
-    const videoFormats = formatList.filter((item) => item.type.match(/^video/) && item.audioBitrate)
-    const videoOnlyFormats = formatList.filter((item) => item.type.match(/^video/) && !item.audioBitrate)
+    const videoFormats = formatList.filter((item) => item.type.match(/^video/) && !item.videoOnly)
+    const videoOnlyFormats = formatList.filter((item) => item.type.match(/^video/) && item.videoOnly)
+    console.log(videoOnlyFormats)
     return (
         <div id="formatSelect">
             <div id="tabSwitch">

@@ -7,6 +7,7 @@ export default () => {
             <div className="inner">
                 <Link to="/" id="logo" className="pointer undecoratedLink">YOUTUBE COON</Link>
                 <section>
+                    <Link to="/search" className="pointer undecoratedLink">SEARCH</Link>
                     <a href="info">INFO</a>
                     <a href="contact">CONTACT</a>
                 </section>

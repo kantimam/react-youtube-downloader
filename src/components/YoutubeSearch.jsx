@@ -3,11 +3,19 @@ import {Route} from 'react-router-dom'
 import Searchbar from './Searchbar'
 import VideoSearch from './VideoSearch'
 
-const YoutubeSearch = ({history}) => {
+const YoutubeSearch = ({history, match}) => {
+    console.log(match)
     return (
         <div className="inner">
-            <Searchbar placeholder="SEARCH FOR VIDEO" onSubmit={inputVal=>console.log(inputVal)}/>
-            <Route path="/search/:query/:page" component={VideoSearch}/>
+            <Route path="/search/:query?" 
+                render={({match})=>
+                    <Searchbar 
+                        initialValue={match.params.query} 
+                        placeholder="SEARCH FOR VIDEO" 
+                        onSubmit={(inputVal)=>history.push(`/search/${encodeURIComponent(inputVal)}`)}
+                    />}
+            />
+            <Route path="/search/:query/:page?" component={VideoSearch}/>
         </div>
     )
 }

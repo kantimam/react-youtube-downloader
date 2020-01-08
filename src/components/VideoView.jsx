@@ -7,21 +7,21 @@ import FormatSelect from './FormatSelect.jsx'
 const VideoView = ({match, history, video, setVideo}) => {
     console.log(history)
     const [error, setError]=useState(null);
-    const videoUrl=match.params.videoUrl;
+    const query=match.params.query;
     useEffect(() => {
         setVideo(null);
         setError(null);
-        getVideoData(videoUrl).then(data=>setVideo(data)).catch(error=>setError(true));
-    }, [videoUrl])
+        getVideoData(query).then(data=>setVideo(data)).catch(error=>setError(true));
+    }, [query])
 
     const onDownload=(itag, container)=>{
         if(video.title && itag && container){
-            history.push(`/video/${videoUrl}/confirm/${itag}/${container}`)
+            history.push(`/video/${query}/confirm/${itag}/${container}`)
         }
     }
     const onDownloadMp3=(itag)=>{
         if(video.title && itag){
-            history.push(`/video/${videoUrl}/confirm_mp3/${itag}`)
+            history.push(`/video/${query}/confirm_mp3/${itag}`)
         }
     }
 

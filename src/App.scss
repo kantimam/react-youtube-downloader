@@ -361,8 +361,10 @@ main {
 }
 
 #videoListCard{
-  background-color: $secondaryColor;
+  /* background-color: $secondaryColor; */
 
+  background-color: rgb(231, 231, 231);
+  height: 100%;
   box-sizing: border-box;
   padding: 0.2rem;
   transition: 0.5s;

@@ -46,7 +46,7 @@ export async function downloadMp3Fetch(videoUrl, artist, title, coverImage) {
 }
 
 
-export async function downloadVideo(videoUrl, itag, name, progressCallback=(progress)=>console.log(progress)) {
+export function downloadVideo(videoUrl, itag, name, progressCallback=(progress)=>console.log(progress)) {
   getFileSize(videoUrl, itag).then(metadata=>{
     axios({
       url: `${downloaderUrl}/download?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
@@ -65,17 +65,15 @@ export async function downloadVideo(videoUrl, itag, name, progressCallback=(prog
   
 }
 
-export async function downloadMp3(videoUrl, itag, name, artist, title, coverImage) {
-    
+export function downloadMp3(videoUrl, itag, name, artist, title, coverImage, progressCallback=(progress)=>console.log(progress)) {
+  getFileSize(videoUrl, itag).then(metadata=>{  
   axios({
       url: `${downloaderUrl}/downloadmp3?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
       method: "GET",
       responseType: "arraybuffer",
       onDownloadProgress: (progressEvent) => {
-        console.log(progressEvent)
-        /* let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-        console.log(progressEvent.lengthComputable)
-        console.log(percentCompleted); */
+        let percentCompleted = Math.round((progressEvent.loaded * 100) / metadata.data.size);
+        progressCallback(percentCompleted)
       }
   }).then((response)=>{
       
@@ -86,16 +84,26 @@ export async function downloadMp3(videoUrl, itag, name, artist, title, coverImag
         
       writer.addTag();
 
-      const blob =writer.getBlob();
+      const blob=writer.getBlob();
 
       saveAs(blob, name?`${name}.mp3`:`music${Date.now()}.mp3`);
     }).catch(error=>console.log(error))
 
+  })
 }
 
-async function getFileSize(videoUrl, itag){
+function getFileSize(videoUrl, itag){
   return axios({
     url: `${downloaderUrl}/getsize?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
     method: "GET",
   })
+}
+
+export function searchVideo(query, count){
+  return fetch(`http://localhost/search?query=${query}${count? "&amount="+count: ""}`)
+    .then(response=>{
+        console.log(response)
+        if(!response.ok) throw Error(response.statusText)
+        return response.json();
+    })
 }

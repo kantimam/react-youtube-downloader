@@ -21,12 +21,12 @@ function App() {
             <Route path="/" render={({history})=><Downloader history={history} video={video} setVideo={setVideo}/>}/>
           </Switch>
           <Route 
-            path="/video/:videoUrl/confirm/:itag/:container" 
+            path="/video/:query/confirm/:itag/:container" 
             render={
               (props)=><ConfirmDownload {...props} video={video} />}
           />
           <Route 
-            path="/video/:videoUrl/confirm_mp3/:itag" 
+            path="/video/:query/confirm_mp3/:itag" 
             render={
               (props)=><ConfirmDownloadMp3 {...props} video={video} />}
           />

@@ -414,6 +414,10 @@ main {
   width: 100%;
 }
 
+#videoSearchNav {
+  margin: 1.4rem 0;
+}
+
 /* video search styles end */
 @media only screen and (max-width: 1000px) {
   #searchbar {

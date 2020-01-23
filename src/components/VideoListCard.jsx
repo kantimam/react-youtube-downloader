@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 const VideoListCard = ({ video }) => {
   return (
-    <Link to={`/video/${encodeURIComponent(video.link)}`}>
+    <Link to={`/video/${encodeURIComponent(`https://youtube.com${video.link}`)}`}>
       <div id="videoListCard" className="pointer">
         <img alt="video thumbnail" src={video.thumbnail} />
         <h3>{video.title}</h3>

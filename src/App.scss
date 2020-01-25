@@ -378,7 +378,13 @@ main {
 }
 
 #videoSearchNav{
-  margin: 1.4rem 0;
+  padding: 0 2rem;
+}
+
+#pageNavContainer{
+  margin: 1.4rem auto;
+  display: flex;
+  justify-content: center;
 }
 
 /* video search styles end */

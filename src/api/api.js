@@ -1,7 +1,7 @@
 import ID3Writer from 'browser-id3-writer'
 import {saveAs} from 'file-saver'
 import axios from 'axios'
-const BASEURL = "http://localhost:5000" || "http://82.165.121.77:5000"
+const BASEURL = "http://localhost:5000"  /*  || "http://82.165.121.77:5000" */
 const downloaderUrl=BASEURL+"/ytdl"
 const searchUrl=BASEURL+"/search"
 
@@ -13,37 +13,6 @@ export async function getVideoData(videoUrl) {
 
 }
 
-export async function downloadMp3Fetch(videoUrl, artist, title, coverImage) {
-    const response = await fetch(`${downloaderUrl}/downloadmp3?videolink=${videoUrl}`);
-    if (response.status !== 200) throw new Error(response)
-    /* const arrayBuffer=await response.arrayBuffer();
-
-    const writer = new ID3Writer(arrayBuffer);
-    writer.setFrame('TIT2', 'Home')
-      .setFrame('TPE1', ['Eminem', '50 Cent'])
-      .setFrame('TALB', 'Friday Night Lights')
-      .setFrame('TYER', 2004)
-      .setFrame('TRCK', '6/8')
-      .setFrame('TCON', ['Soundtrack'])
-      .setFrame('TBPM', 128)
-      .setFrame('WPAY', 'https://google.com')
-      .setFrame('TKEY', 'Fbm')
-    writer.addTag();
-
-    const taggedSongBuffer = writer.arrayBuffer;
-    const blob =await writer.getBlob();
-    const url =await writer.getURL();
-
-    saveAs(url, 'song with tags.mp3'); */
-    console.log(response.body)
-
-    const blob=await response.body.blob();
-    const url=URL.createObjectURL(blob)
-
-    saveAs(url, "example.mp3")
-
-
-}
 
 
 export function downloadVideo(videoUrl, itag, name, progressCallback=(progress)=>console.log(progress)) {
@@ -54,7 +23,7 @@ export function downloadVideo(videoUrl, itag, name, progressCallback=(progress)=
       responseType: "arraybuffer",
       onDownloadProgress: (progressEvent) => {
         let percentCompleted = Math.round((progressEvent.loaded * 100) / metadata.data.size);
-        progressCallback(percentCompleted)
+        //progressCallback(percentCompleted)
       },
     }).then((response)=>{
       const container=metadata.data.format.container || "mp4"
@@ -102,7 +71,7 @@ function getFileSize(videoUrl, itag){
 export function searchVideo(query, page){
   return fetch(`${BASEURL}/search?q=${query}${page? "&page="+page: ""}`)
     .then(response=>{
-        console.log(response)
+        //console.log(response)
         if(!response.ok) throw Error(response.statusText)
         return response.json();
     })

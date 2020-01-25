@@ -415,7 +415,17 @@ main {
 }
 
 #videoSearchNav {
-  margin: 1.4rem 0;
+  padding: 0 2rem;
+}
+
+#pageNavContainer {
+  margin: 1.4rem auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 /* video search styles end */

@@ -4,7 +4,7 @@ import Searchbar from './Searchbar'
 import VideoSearch from './VideoSearch'
 
 const YoutubeSearch = ({history, match}) => {
-    console.log(match)
+    //console.log(match)
     return (
         <div className="inner">
             <Route path="/search/:query?" 

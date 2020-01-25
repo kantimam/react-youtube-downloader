@@ -1,7 +1,8 @@
 import ID3Writer from 'browser-id3-writer'
 import {saveAs} from 'file-saver'
 import axios from 'axios'
-const BASEURL = "http://localhost:80"  /*  || "http://82.165.121.77:5000" */
+const BASEURL = "http://localhost:5000/api"  /*  || "http://82.165.121.77:5000" */
+//const BASEURL="/api"
 const downloaderUrl=BASEURL+"/ytdl"
 const searchUrl=BASEURL+"/search"
 

@@ -25,13 +25,15 @@ const VideoSearch = ({ match, history }) => {
     const [error, setError] = useState(null)
 
     const prevPage = usePrevious(match.params.page || 1);
-
+    const prevQuery= usePrevious(match.params.query);
 
     useEffect(() => {
-        //setData(null)
-        setError(null)
-        //console.log(loadedPages)
-        if (!loadedPages.has(match.params.page)) {
+        /* if the page changes: check if we still search for the same term (query) and if we dont already have this page then load more videos :)*/
+        if (prevQuery===match.params.query && 
+            !loadedPages.has(match.params.page)
+            ) {
+            
+            setError(null)
             searchVideo(match.params.query, match.params.page)
                 .catch(error => {
                     console.log(error)
@@ -41,27 +43,36 @@ const VideoSearch = ({ match, history }) => {
                     loadedPages.add(match.params.page)
                     if (prevPage > match.params.page) {
                         //console.log("loading prev")
-                        setData({ ...json, videos: [...removeDouble(data.videos, json.videos), ...data.videos] })
-                    } else if (prevPage < match.params.page) {
+                        return setData({ ...json, videos: [...removeDouble(data.videos, json.videos), ...data.videos] })
+                    } 
                         //console.log("loading next")
                         setData({ ...json, videos: [...data.videos, ...removeDouble(data.videos, json.videos)] })
-                    } else {
-                        setData(json)
-                    }
+                    
                 })
         }
-    }, [match.params.query, match.params.page])
+    }, [match.params.page])
 
 
     useEffect(() => {
+        setError(null)
+        searchVideo(match.params.query, match.params.page)
+            .catch(error => {
+                console.log(error)
+                setError(true)
+            })
+            .then(json => {
+                loadedPages.add(match.params.page)
+                setData(json)
+            })
+        
         return () => {
             loadedPages.clear();
         };
-    }, [])
+    }, [match.params.query])
 
 
 
-    if (error) return <Link to="/search"><h1 className="centerText">SEARCH FAILED!</h1></Link>
+    if (error) return <Link to="/search"><h1 className="centerText errorMessage">SEARCH FAILED!</h1></Link>
     if (data && data.videos.length) {
         return (
             <>

@@ -3,6 +3,7 @@ import {getVideoData} from '../api/api.js'
 import Loading from './Loading'
 import VideoCard from './VideoCard'
 import FormatSelect from './FormatSelect.jsx'
+import Error from './Error.jsx'
 
 const VideoView = ({match, history, video, setVideo}) => {
     console.log(history)
@@ -11,7 +12,7 @@ const VideoView = ({match, history, video, setVideo}) => {
     useEffect(() => {
         setVideo(null);
         setError(null);
-        getVideoData(query).then(data=>setVideo(data)).catch(error=>setError(true));
+        getVideoData(query).then(data=>setVideo(data)).catch(error=>setError("COULD NOT FIND VIDEO WITH THIS URL"));
     }, [query])
 
     const onDownload=(itag, container)=>{
@@ -26,7 +27,7 @@ const VideoView = ({match, history, video, setVideo}) => {
     }
 
 
-    if(error) return <div id="error">error</div>
+    if(error) return <Error message={error}/>
     if(!video) return <Loading/>
     return (
         <div id="videoView">

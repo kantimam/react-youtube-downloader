@@ -72,7 +72,7 @@ const VideoSearch = ({ match, history }) => {
 
 
 
-    if (error) return <Link to="/search"><h1 className="centerText">SEARCH FAILED!</h1></Link>
+    if (error) return <Link to="/search"><h1 className="centerText errorMessage">SEARCH FAILED!</h1></Link>
     if (data && data.videos.length) {
         return (
             <>

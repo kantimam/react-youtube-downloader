@@ -183,6 +183,12 @@ main {
 
 /* END SEARCHBAR */
 
+.errorMessage, .loading{
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+
 
 /* VIDEOVIEW */
 
@@ -319,6 +325,7 @@ main {
     font-size: 1.2rem;
     font-weight: bold;
     background-color: $secondaryColor;
+    text-transform: uppercase;
   }
   h1{
     padding: 0 0 1rem 0;
@@ -351,6 +358,15 @@ main {
   width: 100%;
   
 }
+.progressContainer{
+  width: 100%;
+  border-radius: 0.4rem;
+}
+
+/* .fancyShadow{
+  border-radius: 0.6rem;
+  box-shadow: 0.4rem 0.2rem 0.5rem rgba(220,220,220, 1), -0.4rem -0.2rem 0.8rem rgba(255,255,255,1), 1rem 1rem 1rem rgba(255,255,255,0.25) inset;
+} */
 
 /* video search styles */
 #videoList{

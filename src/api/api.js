@@ -15,7 +15,7 @@ export async function getVideoData(videoUrl) {
 }
 
 
-
+/* 
 export function downloadVideo(videoUrl, itag, name, progressCallback=(progress)=>console.log(progress)) {
   getFileSize(videoUrl, itag).then(metadata=>{
     axios({
@@ -33,18 +33,38 @@ export function downloadVideo(videoUrl, itag, name, progressCallback=(progress)=
   }).catch(error=>console.log(error))
    
   
+} */
+
+export function downloadVideo(videoUrl, itag, name, metadata, progressCallback=(progress)=>console.log(progress), doneCallBack=(progress)=>console.log(progress)) {
+  axios({
+      url: `${downloaderUrl}/download?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
+      method: "GET",
+      responseType: "arraybuffer",
+      onDownloadProgress: metadata? (progressEvent) => {
+        //let percentCompleted = Math.round((progressEvent.loaded * 100) / metadata.size);
+        progressCallback(progressEvent.loaded)
+      } : null
+    }).then((response)=>{
+      const container=metadata? metadata.format.container : "mp4"
+      saveAs(new Blob([response.data]), name?`${name}.${container}`:`video${Date.now()}.mp4`);
+      doneCallBack();
+    }).catch(error=>console.log(error))
+  
+   
+  
 }
 
-export function downloadMp3(videoUrl, itag, name, artist, title, coverImage, progressCallback=(progress)=>console.log(progress)) {
+
+export function downloadMp3(videoUrl, itag, name, artist, title, coverImage, progressCallback=(progress)=>console.log(progress), doneCallBack=(progress)=>console.log(progress)) {
   getFileSize(videoUrl, itag).then(metadata=>{  
   axios({
       url: `${downloaderUrl}/downloadmp3?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
       method: "GET",
       responseType: "arraybuffer",
-      onDownloadProgress: (progressEvent) => {
-        let percentCompleted = Math.round((progressEvent.loaded * 100) / metadata.data.size);
-        progressCallback(percentCompleted)
-      }
+      onDownloadProgress: metadata? (progressEvent) => {
+        //let percentCompleted = Math.round((progressEvent.loaded * 100) / metadata.data.size);
+        progressCallback(progressEvent.loaded)
+      } : null
   }).then((response)=>{
       
 
@@ -57,12 +77,13 @@ export function downloadMp3(videoUrl, itag, name, artist, title, coverImage, pro
       const blob=writer.getBlob();
 
       saveAs(blob, name?`${name}.mp3`:`music${Date.now()}.mp3`);
+      doneCallBack();
     }).catch(error=>console.log(error))
 
   })
 }
 
-function getFileSize(videoUrl, itag){
+export function getFileSize(videoUrl, itag){
   return axios({
     url: `${downloaderUrl}/getsize?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
     method: "GET",

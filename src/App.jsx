@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Navigation from './components/Navigation';
 import Downloader from './components/Downloader';
 import YoutubeSearch from './components/YoutubeSearch';
+import Banner from './components/Banner'
 
 import {ConfirmDownload, ConfirmDownloadMp3} from './components/ConfirmDownload';
 

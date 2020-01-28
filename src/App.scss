@@ -131,13 +131,18 @@ main {
 }
 
 #banner {
-  margin-top: 6rem;
+  margin-top: 3rem;
+  img{
+    height: 13rem;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
 }
 
 /* SEARCHBAR */
 
 #searchbar {
-  margin-top: 4rem;
+  margin-top: 2.4rem;
   /* margin-top: 2rem; */
   margin-bottom: 4rem;
   box-sizing: border-box;

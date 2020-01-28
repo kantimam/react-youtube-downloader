@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Navigation from './components/Navigation';
 import Downloader from './components/Downloader';
 import YoutubeSearch from './components/YoutubeSearch';
+import Banner from './components/Banner'
 
 import {ConfirmDownload, ConfirmDownloadMp3} from './components/ConfirmDownload';
 
@@ -16,6 +17,7 @@ function App() {
       <div className="fullSizeContainer borderBox">
         <Navigation />
         <main>
+          <Banner/>
           <Switch>
             <Route path="/search" component={YoutubeSearch}/>
             <Route path="/" render={({history})=><Downloader history={history} video={video} setVideo={setVideo}/>}/>

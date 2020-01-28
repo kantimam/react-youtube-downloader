@@ -8,7 +8,6 @@ import Banner from './Banner'
 export default ({video, setVideo, history}) => {
     return (
         <div id="downloader" className="inner">
-            <Banner/>
             {/* youtube url needs to be encoded to be used as param */}
             <Route path={["/video/:query?", "/"]} 
                 render={({match})=>

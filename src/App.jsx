@@ -17,7 +17,6 @@ function App() {
       <div className="fullSizeContainer borderBox">
         <Navigation />
         <main>
-          <Banner/>
           <Switch>
             <Route path="/search" component={YoutubeSearch}/>
             <Route path="/" render={({history})=><Downloader history={history} video={video} setVideo={setVideo}/>}/>

@@ -417,6 +417,8 @@ main {
 
 #videoListCard {
   /* background-color: $secondaryColor; */
+  margin: 0 auto;
+  max-width: 40rem;
   background-color: #e7e7e7;
   height: 100%;
   -webkit-box-sizing: border-box;

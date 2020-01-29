@@ -1,11 +1,11 @@
 import React from 'react'
-import panda from '../img/panda.jpg'
+import icon from '../img/coon.png'
 
-const Banner = () => {
+const Banner = ({text="YOUTUBE COON"}) => {
     return (
         <div id="banner" className="centerText">
-            <img alt="panda" src={panda}/>
-            <h1>YOUTUBE COON</h1>
+            <img alt="panda" src={icon}/>
+            <h1>{text}</h1>
         </div>
     )
 }

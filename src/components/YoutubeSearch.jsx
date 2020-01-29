@@ -9,7 +9,7 @@ const YoutubeSearch = ({ history, match }) => {
     //console.log(match)
     return (
         <div className="inner">
-            <Banner />
+            <Banner text="YOUTUBE COON <SEARCH>"/>
             <Route path="/search/:query?"
                 render={({ match }) =>
                     <Searchbar

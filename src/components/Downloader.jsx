@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Route } from 'react-router-dom'
 import Searchbar from './Searchbar'
 import VideoCard from './VideoCard'
@@ -15,19 +15,36 @@ const getYoutubeID = (url) => {
     return false
 }
 
+let timeout=null;
+
 export default ({ video, setVideo, history }) => {
+    const [searchState, setSearch]=useState("");
+
+    useEffect(() => {
+        return () => {
+            clearTimeout(timeout)
+        };
+    }, [])
+
+    const showError=()=>{
+        setSearch("NOT A VALID URL OR ID")
+        timeout=setTimeout(()=>{    
+            setSearch("")
+        },3000)
+    }
+
     const onSearchSubmit = (value) => {
         if (value) {
             const ytID=getYoutubeID(value);
-            if(ytID)    return history.push(`/video/${ytID}`)
-            console.log("not a valid youtube url or id")
+            if(ytID) return history.push(`/video/${ytID}`)
+            console.log("not a valid youtube url or id");
+            showError();
         }
     }
 
     return (
         <div id="downloader" className="inner">
-            <Banner />
-            {/* youtube url needs to be encoded to be used as param */}
+            <Banner text={searchState? searchState : "YOUTUBE COON <DL>"}/>
             <Route path={["/video/:query?", "/"]}
                 render={({ match }) =>
                     <Searchbar

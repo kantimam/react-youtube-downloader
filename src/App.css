@@ -1,8 +1,12 @@
 html,
 body,
-#root,
-.fullSizeContainer {
+#root {
   height: 100%;
+}
+
+.fullSizeContainer {
+  position: relative;
+  min-height: 100%;
   width: 100%;
 }
 
@@ -85,6 +89,23 @@ li {
   cursor: pointer;
 }
 
+footer {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(209, 209, 209, 0.493);
+  width: 100%;
+  padding: 0.6rem 0;
+}
+
+footer p {
+  display: inline-block;
+}
+
+footer a {
+  margin-left: 1rem;
+  font-weight: bold;
+}
+
 /* END BASE CLASSES */
 #nav {
   z-index: 3;
@@ -94,6 +115,8 @@ li {
   top: 0;
   left: 0;
   background-color: #c540df;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 #nav .inner {
@@ -114,13 +137,21 @@ li {
   margin-left: 4rem;
 }
 
+#nav #mainIcon {
+  height: 100%;
+}
+
+#nav #mainIcon img {
+  height: 90%;
+}
+
 main {
   z-index: 1;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding-top: 3rem;
-  height: 100%;
   position: relative;
+  padding-bottom: 4rem;
 }
 
 #downloader {
@@ -388,6 +419,16 @@ main {
 
 #customNameForm #closeIcon:hover svg {
   fill: white;
+}
+
+#autoMp3Button {
+  background-color: greenyellow;
+  border: none;
+  font-weight: bold;
+  margin: 0.2rem auto 0.6rem auto;
+  display: block;
+  padding: 0.6rem 1rem;
+  border-radius: 0.4rem;
 }
 
 #confirmModal {

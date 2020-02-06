@@ -6,7 +6,6 @@ import FormatSelect from './FormatSelect.jsx'
 import Error from './Error.jsx'
 
 const VideoView = ({match, history, video, setVideo}) => {
-    console.log(history)
     const [error, setError]=useState(null);
     const query=match.params.query;
     useEffect(() => {

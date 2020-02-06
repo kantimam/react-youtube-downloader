@@ -7,6 +7,7 @@ import YoutubeSearch from './components/YoutubeSearch';
 import Banner from './components/Banner'
 
 import { ConfirmDownload, ConfirmDownloadMp3 } from './components/ConfirmDownload';
+import { redirectIfValid } from './components/util';
 
 
 function App() {
@@ -14,10 +15,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="fullSizeContainer borderBox">
+    {/* handle mobile browser bullshit */}
+      <div style={{minHeight: `${window.innerHeight}px`}} className="fullSizeContainer borderBox">
         <Navigation />
         <main>
           <Switch>
+            {/* route to share youtube urls from other android apps (youtube for example <3) only works on adroid for now :(  */}
+            <Route path="/share" render={({history})=>redirectIfValid(history)}/>
+            
             <Route path="/search" component={YoutubeSearch} />
             <Route path="/" render={({ history }) => <Downloader history={history} video={video} setVideo={setVideo} />} />
           </Switch>

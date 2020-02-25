@@ -4,16 +4,8 @@ import Searchbar from './Searchbar'
 import VideoCard from './VideoCard'
 import VideoView from './VideoView'
 import Banner from './Banner'
+import {getYoutubeID} from './util'
 
-const getYoutubeID = (url) => {
-    /* check if its a valid youtube url and then take the first 11 chars of id and ditch the others */
-    const idRegex = /^.*(youtu.be\/|youtube(-nocookie)?.com\/(v\/|.*u\/\w\/|embed\/|.*v=))([\w-]{11}).*/;
-    const urlComponents=url.match(idRegex)
-    if (urlComponents && urlComponents[4]) {
-        return urlComponents[4]
-    }
-    return false
-}
 
 let timeout=null;
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Navigation from './components/Navigation';
@@ -12,11 +12,21 @@ import { redirectIfValid } from './components/util';
 
 function App() {
   const [video, setVideo] = useState(null);
+  const [appHeight, setHeight]=useState(window.innerHeight);
+
+  useEffect(() => {
+    const resizeListener=window.addEventListener('resize',()=>{
+      setHeight(window.innerHeight);
+    })
+    return () => {
+      window.removeEventListener(resizeListener);
+    };
+  }, [])
 
   return (
     <BrowserRouter>
     {/* handle mobile browser bullshit */}
-      <div style={{minHeight: `${window.innerHeight}px`}} className="fullSizeContainer borderBox">
+      <div style={{minHeight: `${appHeight}px`}} className="fullSizeContainer borderBox">
         <Navigation />
         <main>
           <Switch>

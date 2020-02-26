@@ -113,6 +113,11 @@ footer{
 
 /* end loading fallback */
 
+#debugFullHeight{
+  height: 100vh;
+  word-wrap: break-word;
+}
+
 #nav {
   z-index: 3;
   height: $navHeight;

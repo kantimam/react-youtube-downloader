@@ -1,12 +1,12 @@
-html,
+/* html,
 body,
-#root {
+#root{
   height: 100%;
-}
-
+} */
+/* mobile browsers beeing annoying again so no min-height */
 .fullSizeContainer {
   position: relative;
-  min-height: 100%;
+  /* min-height: 100%; */
   width: 100%;
 }
 
@@ -107,6 +107,20 @@ footer a {
 }
 
 /* END BASE CLASSES */
+/* full page loading fallback for react suspense */
+#loadingScreen {
+  height: 100%;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* end loading fallback */
+#debugFullHeight {
+  height: 100vh;
+  word-wrap: break-word;
+}
+
 #nav {
   z-index: 3;
   height: 3rem;
@@ -154,16 +168,17 @@ main {
   padding-bottom: 4rem;
 }
 
-#downloader {
-  /* height: 100%; */
-  /* background-color: $bgColor; */
-}
+/* #logo{
 
-#test {
-  /* background-color: red;
-  height: 100%; */
-}
-
+} */
+/* #downloader {
+  height: 100%;
+  background-color: $bgColor;
+} */
+/* #test {
+  background-color: red;
+  height: 100%;
+} */
 #banner {
   margin-top: 3rem;
 }
@@ -226,6 +241,7 @@ main {
   transition: -webkit-transform 0.4s;
   transition: transform 0.4s;
   transition: transform 0.4s, -webkit-transform 0.4s;
+  /* &:hover {} */
 }
 
 /* END SEARCHBAR */
@@ -494,9 +510,9 @@ main {
 
 /* video search styles end */
 @media only screen and (max-width: 1000px) {
-  #searchbar {
-    /* width: 36rem; */
-  }
+  /* #searchbar {
+    width: 36rem;
+  } */
   #videoView {
     margin: 0 auto;
     width: 52rem;

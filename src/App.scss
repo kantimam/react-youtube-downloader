@@ -103,6 +103,16 @@ footer{
 
 /* END BASE CLASSES */
 
+/* full page loading fallback for react suspense */
+#loadingScreen{
+  height: 100%;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* end loading fallback */
+
 #nav {
   z-index: 3;
   height: $navHeight;

@@ -14,6 +14,11 @@ const ConfirmDownload = ({ match, video, history }) => {
     const download = (event) => {
         event.preventDefault();
         if(downloadState==="download"){
+            /* if file is more than 500mb download video directly and dont store it in memory before */
+            if(false){
+                /* download video directly */
+                return close();
+            }
             setDownload("loading")
             return downloadVideo(match.params.query, match.params.itag, name, metadata, (loaded)=>setProgress(loaded), (state)=>setDownload(state))
         }

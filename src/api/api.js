@@ -36,9 +36,10 @@ export function downloadVideo(videoUrl, itag, name, metadata, progressCallback =
     doneCallBack("failed! :(");
 
   })
+}
 
-
-
+export function directDownloadVideo(videoUrl, itag){
+  window.open(`${downloaderUrl}/downloadmp3?videolink=${videoUrl}${itag?`&format=${itag}`:""}`, '_blank');
 }
 
 
@@ -87,6 +88,46 @@ export function downloadMp3(videoUrl, itag, name, metadata, mp3Data, progressCal
   })
 
 
+}
+
+export function downloadMp3Fast(videoUrl, itag, name, metadata, mp3Data, progressCallback = (progress) => console.log(progress), doneCallBack = (progress) => console.log(progress)) {
+  axios({
+    url: `${downloaderUrl}/downloadmp3?videolink=${videoUrl}${itag?`&format=${itag}`:""}`,
+    method: "GET",
+    responseType: "arraybuffer",
+    onDownloadProgress: metadata ? (progressEvent) => {
+      progressCallback(progressEvent.loaded)
+    } : null
+  }).then((response) => {
+
+
+    const writer = new ID3Writer(response.data);
+    if (mp3Data) {
+      const {
+        title,
+        artist,
+      } = mp3Data;
+      if (title) writer.setFrame('TIT2', title)
+      if (artist) writer.setFrame('TPE1', [artist])
+      
+    }
+    writer.addTag();
+
+    const blob = writer.getBlob();
+
+    saveAs(blob, name ? `${name}.mp3` : `music${Date.now()}.mp3`);
+    doneCallBack("finished");
+  }).catch(error => {
+    console.log(error)
+    doneCallBack("failed! :(");
+
+  })
+
+
+}
+
+export function directDownloadMp3(videoUrl, itag){
+  window.open(`${downloaderUrl}/downloadmp3?videolink=${videoUrl}${itag?`&format=${itag}`:""}`, '_blank');
 }
 
 

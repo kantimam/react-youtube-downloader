@@ -20,7 +20,7 @@ const removeDouble = (a, b) => {
 
 const loadedPages = new Set()
 
-const VideoSearch = ({ match, history }) => {
+const VideoSearch = ({ match, history, location }) => {
     const [data, setData] = useState(null)
     const [error, setError] = useState(null)
 
@@ -51,6 +51,33 @@ const VideoSearch = ({ match, history }) => {
                 })
         }
     }, [match.params.page])
+
+
+    /* add another hook that fires when url didnt actually change but forceRefresh state is set so stale data can be replaced */
+    useEffect(() => {
+        console.log(location.state);
+        if(prevQuery===match.params.query){
+            searchVideo(match.params.query, match.params.page)
+            .catch(error => {
+                console.log(error)
+                setError(true)
+            })
+            .then(json => {
+                if(!json.length) return console.log("no data received");
+                loadedPages.add(match.params.page)
+                /* if the requested data has more entries just replace the state */
+                if(!data.length || json.length>data.length) return setData(json)
+                
+                /* else if the requested data is most likely inside the state or at least a part of it splice the new data into it */
+                const videoState=[...data]
+                const firstId=videoState.findIndex(item=>item.link===json[0].link) || 0;
+                const lastId=videoState.findIndex(item=>item.link===json[json.length-1].link) || 0;
+
+                videoState.splice(firstId, lastId-firstId, ...json);
+                setData(videoState);
+            })
+        }
+    }, [location.state])
 
 
     useEffect(() => {

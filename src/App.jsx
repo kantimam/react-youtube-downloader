@@ -29,7 +29,7 @@ function App() {
     <BrowserRouter>
       {/* handle mobile browser bullshit */}
       <div style={{ minHeight: `${appHeight}px` }} className="fullSizeContainer borderBox">
-        <Suspense fallback={PageLoading}>
+        <Suspense fallback={<PageLoading/>}>
           <Navigation />
           <main>
             <Switch>

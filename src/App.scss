@@ -136,8 +136,21 @@ footer{
     align-items: center;
   }
   section{
+    width: 10rem;
+    max-width: 48%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     a{
-      margin-left: 4rem;
+      border-radius: 0.4rem;
+      background-color: $secondaryColor;
+      padding: 0.1rem 0.4rem;
+      color: rgb(19, 19, 19);
+      font-size: 1.2rem;
+      transition: 0.6s;
+      box-shadow: 0.2rem 0.2rem 0.5rem rgba(175, 88, 192, 0.247), -0.1rem -0.2rem 0.8rem rgba(238, 153, 255, 0.459), 0.1rem 0.2rem 0.2rem rgb(126, 41, 143) inset;
+
+
     }
   }
   #mainIcon{
@@ -146,6 +159,11 @@ footer{
     img{
       height: 90%;
     }
+  }
+  .navLinkActive{
+    font-size: 1.3rem;
+    color: $mainTextColor;
+    box-shadow: 0.2rem 0.2rem 0.5rem rgb(126, 41, 143), -0.1rem -0.2rem 0.8rem rgba(175, 88, 192, 0.247), 0.1rem 0.2rem 0.2rem rgba(238, 153, 255, 0.459) inset;
   }
   
 }

@@ -147,8 +147,30 @@ footer a {
           align-items: center;
 }
 
+#nav section {
+  width: 10rem;
+  max-width: 48%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 #nav section a {
-  margin-left: 4rem;
+  border-radius: 0.4rem;
+  background-color: #c540df;
+  padding: 0.1rem 0.4rem;
+  color: #131313;
+  font-size: 1.2rem;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-box-shadow: 0.2rem 0.2rem 0.5rem rgba(175, 88, 192, 0.247), -0.1rem -0.2rem 0.8rem rgba(238, 153, 255, 0.459), 0.1rem 0.2rem 0.2rem #7e298f inset;
+          box-shadow: 0.2rem 0.2rem 0.5rem rgba(175, 88, 192, 0.247), -0.1rem -0.2rem 0.8rem rgba(238, 153, 255, 0.459), 0.1rem 0.2rem 0.2rem #7e298f inset;
 }
 
 #nav #mainIcon {
@@ -157,6 +179,13 @@ footer a {
 
 #nav #mainIcon img {
   height: 90%;
+}
+
+#nav .navLinkActive {
+  font-size: 1.3rem;
+  color: black;
+  -webkit-box-shadow: 0.2rem 0.2rem 0.5rem #7e298f, -0.1rem -0.2rem 0.8rem rgba(175, 88, 192, 0.247), 0.1rem 0.2rem 0.2rem rgba(238, 153, 255, 0.459) inset;
+          box-shadow: 0.2rem 0.2rem 0.5rem #7e298f, -0.1rem -0.2rem 0.8rem rgba(175, 88, 192, 0.247), 0.1rem 0.2rem 0.2rem rgba(238, 153, 255, 0.459) inset;
 }
 
 main {

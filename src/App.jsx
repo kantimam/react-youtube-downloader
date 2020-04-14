@@ -31,7 +31,7 @@ function App() {
       <div style={{ minHeight: `${appHeight}px` }} className="fullSizeContainer borderBox">
         <Navigation />
         <main>
-          <Suspense fallback={<PageLoading />} maxDuration={400}>
+          <Suspense fallback={<PageLoading />}>
 
             <Switch>
               {/* route to share youtube urls from other android apps (youtube for example <3) only works on adroid for now :(  */}

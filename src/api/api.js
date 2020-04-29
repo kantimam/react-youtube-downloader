@@ -4,7 +4,7 @@ import {
 } from 'file-saver'
 import axios from 'axios'
 //const BASEURL = "http://localhost:5000/api" /*  || "http://82.165.121.77:5000" */
-const BASEURL="/api"
+const BASEURL="http://localhost:5000/api"
 const downloaderUrl = BASEURL + "/ytdl"
 const searchUrl = BASEURL + "/search"
 const downloadProxyUrl = BASEURL + "/dlproxy"

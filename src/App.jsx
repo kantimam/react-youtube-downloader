@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect, Suspense, lazy, useRef } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Navigation from './components/Navigation';
@@ -15,13 +15,14 @@ const Downloader = lazy(() => import('./components/Downloader'));
 function App() {
   const [video, setVideo] = useState(null);
   const [appHeight, setHeight] = useState(window.innerHeight);
+  const resizeRef=useRef(null);
 
   useEffect(() => {
-    const resizeListener = window.addEventListener('resize', () => {
+    resizeRef.current = window.addEventListener('resize', () => {
       setHeight(window.innerHeight);
     })
     return () => {
-      window.removeEventListener(resizeListener);
+      window.removeEventListener(resizeRef.current);
     };
   }, [])
 

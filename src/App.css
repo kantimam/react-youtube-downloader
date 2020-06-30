@@ -64,7 +64,8 @@ p {
   text-transform: uppercase;
 }
 
-.undecoratedLink, a {
+.undecoratedLink,
+a {
   color: black;
   text-decoration: none;
 }
@@ -90,6 +91,7 @@ li {
 }
 
 footer {
+  z-index: 4;
   position: absolute;
   bottom: 0;
   background-color: rgba(209, 209, 209, 0.493);
@@ -274,7 +276,8 @@ main {
 }
 
 /* END SEARCHBAR */
-.errorMessage, .loading {
+.errorMessage,
+.loading {
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -637,7 +640,8 @@ main {
   margin-bottom: 2rem;
 }
 
-.dot1, .dot2 {
+.dot1,
+.dot2 {
   width: 60%;
   height: 60%;
   display: inline-block;
@@ -670,7 +674,8 @@ main {
 }
 
 @-webkit-keyframes sk-bounce {
-  0%, 100% {
+  0%,
+  100% {
     -webkit-transform: scale(0);
   }
   50% {
@@ -679,7 +684,8 @@ main {
 }
 
 @keyframes sk-bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(0);
     -webkit-transform: scale(0);
   }

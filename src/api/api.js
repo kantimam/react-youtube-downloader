@@ -4,9 +4,9 @@ import {
 } from 'file-saver'
 import axios from 'axios'
 //const BASEURL = "http://localhost:5000/api" /*  || "http://82.165.121.77:5000" */
-const BASEURL="http://localhost:5000/api"
+const BASEURL = "/api"
 const downloaderUrl = BASEURL + "/ytdl"
-const searchUrl = BASEURL + "/search"
+//const searchUrl = BASEURL + "/search"
 const downloadProxyUrl = BASEURL + "/dlproxy"
 
 export async function getVideoData(videoUrl) {
@@ -38,7 +38,7 @@ export function downloadVideo(videoUrl, itag, name, metadata, progressCallback =
   })
 }
 
-export function directDownloadVideo(videoUrl, itag){
+export function directDownloadVideo(videoUrl, itag) {
   window.open(`${downloaderUrl}/downloadmp3?videolink=${videoUrl}${itag?`&format=${itag}`:""}`, '_blank');
 }
 
@@ -59,7 +59,7 @@ export function downloadMp3(videoUrl, itag, name, metadata, mp3Data, progressCal
       const {
         title,
         artist,
-        cover
+        /* cover */
       } = mp3Data;
       if (title) writer.setFrame('TIT2', title)
       if (artist) writer.setFrame('TPE1', [artist])
@@ -109,7 +109,7 @@ export function downloadMp3Fast(videoUrl, itag, name, metadata, mp3Data, progres
       } = mp3Data;
       if (title) writer.setFrame('TIT2', title)
       if (artist) writer.setFrame('TPE1', [artist])
-      
+
     }
     writer.addTag();
 
@@ -126,13 +126,13 @@ export function downloadMp3Fast(videoUrl, itag, name, metadata, mp3Data, progres
 
 }
 
-export function directDownloadMp3(videoUrl, itag){
+export function directDownloadMp3(videoUrl, itag) {
   window.open(`${downloaderUrl}/downloadmp3?videolink=${videoUrl}${itag?`&format=${itag}`:""}`, '_blank');
 }
 
 
 
-function getCorsImage(url, cb) {
+/* function getCorsImage(url, cb) {
   const link = `${downloadProxyUrl}?link=${url}`
   fetch(link).then(response => {
     if (!response.ok) {
@@ -143,7 +143,7 @@ function getCorsImage(url, cb) {
   }).then(buffer => {
     cb(buffer)
   }).catch(e => console.log(e))
-}
+} */
 
 
 export function getFileSize(videoUrl, itag) {

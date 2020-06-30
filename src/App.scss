@@ -63,7 +63,8 @@ p {
   text-transform: uppercase;
 }
 
-.undecoratedLink, a {
+.undecoratedLink,
+a {
   color: $mainTextColor;
   text-decoration: none;
 }
@@ -86,16 +87,19 @@ li {
   cursor: pointer;
 }
 
-footer{
+footer {
+  z-index: 4;
   position: absolute;
   bottom: 0;
   background-color: rgba(209, 209, 209, 0.493);
   width: 100%;
   padding: 0.6rem 0;
-  p{
+
+  p {
     display: inline-block;
   }
-  a{
+
+  a {
     margin-left: 1rem;
     font-weight: bold;
   }
@@ -104,7 +108,7 @@ footer{
 /* END BASE CLASSES */
 
 /* full page loading fallback for react suspense */
-#loadingScreen{
+#loadingScreen {
   height: 100%;
   width: 100%;
   font-size: 2rem;
@@ -113,7 +117,7 @@ footer{
 
 /* end loading fallback */
 
-#debugFullHeight{
+#debugFullHeight {
   height: 100vh;
   word-wrap: break-word;
 }
@@ -128,6 +132,7 @@ footer{
   background-color: $secondaryColor;
   font-weight: bold;
   font-size: 1.2rem;
+
   .inner {
     height: 100%;
     padding: 0;
@@ -135,13 +140,15 @@ footer{
     justify-content: space-between;
     align-items: center;
   }
-  section{
+
+  section {
     width: 10rem;
     max-width: 48%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    a{
+
+    a {
       border-radius: 0.4rem;
       background-color: $secondaryColor;
       padding: 0.1rem 0.4rem;
@@ -155,19 +162,21 @@ footer{
 
     }
   }
-  #mainIcon{
+
+  #mainIcon {
     height: 100%;
-    
-    img{
+
+    img {
       height: 90%;
     }
   }
-  .navLinkActive{
+
+  .navLinkActive {
     font-size: 1.2rem;
     color: $mainTextColor;
     box-shadow: 0.2rem 0.2rem 0.5rem rgba(175, 88, 192, 0.247), -0.1rem -0.2rem 0.8rem rgba(238, 153, 255, 0.459), 0.1rem 0.2rem 0.2rem rgb(126, 41, 143) inset;
   }
-  
+
 }
 
 main {
@@ -194,7 +203,8 @@ main {
 
 #banner {
   margin-top: 3rem;
-  img{
+
+  img {
     height: 13rem;
     border-radius: 50%;
     margin-bottom: 1rem;
@@ -250,7 +260,8 @@ main {
 
 /* END SEARCHBAR */
 
-.errorMessage, .loading{
+.errorMessage,
+.loading {
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -355,7 +366,7 @@ main {
   }
 }
 
-.hoverShadow:hover{
+.hoverShadow:hover {
   transform: scale(1.02) !important;
   background-color: $secondaryColor !important;
   box-shadow: 2px 2px 20px 6px $secondaryColor;
@@ -377,7 +388,8 @@ main {
   background-color: white;
   border: 1px solid $secondaryColor;
   border-radius: 0.6rem;
-  input{
+
+  input {
     box-sizing: border-box;
     padding: 0 0.6rem;
     border-radius: 0.4rem;
@@ -386,7 +398,8 @@ main {
     margin-bottom: 1rem;
     font-size: 1rem;
   }
-  .submit{
+
+  .submit {
     border-radius: 0.4rem;
     padding: 0.4rem;
     font-size: 1.2rem;
@@ -394,10 +407,12 @@ main {
     background-color: $secondaryColor;
     text-transform: uppercase;
   }
-  h1{
+
+  h1 {
     padding: 0 0 1rem 0;
   }
-  #closeIcon{
+
+  #closeIcon {
     height: 2rem;
     width: 2rem;
     border: 1px solid $secondaryColor;
@@ -406,20 +421,23 @@ main {
     color: white;
     background-color: $lightSecondary;
     transition: 0.4s;
-    svg{
+
+    svg {
       fill: $secondaryColor;
     }
-    &:hover{
+
+    &:hover {
       transform: scale(1.2);
       background-color: $secondaryColor;
-      svg{
+
+      svg {
         fill: white;
       }
     }
   }
 }
 
-#autoMp3Button{
+#autoMp3Button {
   background-color: greenyellow;
   border: none;
   font-weight: bold;
@@ -429,13 +447,14 @@ main {
   border-radius: 0.4rem;
 }
 
-#confirmModal{
+#confirmModal {
   position: fixed;
   top: 25vh;
   width: 100%;
-  
+
 }
-.progressContainer{
+
+.progressContainer {
   width: 100%;
   border-radius: 0.4rem;
 }
@@ -446,14 +465,14 @@ main {
 } */
 
 /* video search styles */
-#videoList{
+#videoList {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   grid-gap: 0.2rem;
 }
 
-#videoListCard{
+#videoListCard {
   /* background-color: $secondaryColor; */
   margin: 0 auto;
   max-width: 40rem;
@@ -462,20 +481,21 @@ main {
   box-sizing: border-box;
   padding: 0.2rem;
   transition: 0.5s;
-  &:hover{
+
+  &:hover {
     transform: scale(1.05);
   }
-  
-  img{
+
+  img {
     width: 100%;
   }
 }
 
-#videoSearchNav{
+#videoSearchNav {
   padding: 0 2rem;
 }
 
-#pageNavContainer{
+#pageNavContainer {
   margin: 1.4rem auto;
   display: flex;
   justify-content: center;
@@ -555,7 +575,7 @@ main {
 }
 
 
-#loadingScreen{
+#loadingScreen {
   min-width: 16rem;
   min-height: 60vh;
   height: 100%;
@@ -580,7 +600,8 @@ main {
   margin-bottom: 2rem;
 }
 
-.dot1, .dot2 {
+.dot1,
+.dot2 {
   width: 60%;
   height: 60%;
   display: inline-block;
@@ -588,7 +609,7 @@ main {
   top: 0;
   background-color: rgb(15, 15, 15);
   border-radius: 100%;
-  
+
   -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
   animation: sk-bounce 2.0s infinite ease-in-out;
 }
@@ -600,19 +621,40 @@ main {
   animation-delay: -1.0s;
 }
 
-@-webkit-keyframes sk-rotate { 100% { -webkit-transform: rotate(360deg) }}
-@keyframes sk-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+@-webkit-keyframes sk-rotate {
+  100% {
+    -webkit-transform: rotate(360deg)
+  }
+}
+
+@keyframes sk-rotate {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg)
+  }
+}
 
 @-webkit-keyframes sk-bounce {
-  0%, 100% { -webkit-transform: scale(0.0) }
-  50% { -webkit-transform: scale(1.0) }
+
+  0%,
+  100% {
+    -webkit-transform: scale(0.0)
+  }
+
+  50% {
+    -webkit-transform: scale(1.0)
+  }
 }
 
 @keyframes sk-bounce {
-  0%, 100% { 
+
+  0%,
+  100% {
     transform: scale(0.0);
     -webkit-transform: scale(0.0);
-  } 50% { 
+  }
+
+  50% {
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }

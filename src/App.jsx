@@ -15,7 +15,7 @@ const Downloader = lazy(() => import('./components/Downloader'));
 function App() {
   const [video, setVideo] = useState(null);
   const [appHeight, setHeight] = useState(window.innerHeight);
-  const resizeRef=useRef(null);
+  const resizeRef = useRef(null);
 
   useEffect(() => {
     resizeRef.current = window.addEventListener('resize', () => {
@@ -44,6 +44,7 @@ function App() {
               <Route path="/search" component={YoutubeSearch} />
               <Route path="/" render={({ history }) => <Downloader history={history} video={video} setVideo={setVideo} />} />
             </Switch>
+            {/* move this modal to a portal */}
             <Route
               path="/video/:query/confirm/:itag"
               render={

@@ -15,7 +15,7 @@ const YoutubeSearch = ({ history, match }) => {
                     <Searchbar
                         match={match}
                         placeholder="SEARCH FOR VIDEO"
-                        onSubmit={(inputVal) => history.push(`/search/${encodeURIComponent(inputVal)}/1`)}
+                        onSubmit={(inputVal) => history.push({pathname: `/search/${encodeURIComponent(inputVal)}/1`, state: Date.now()})}
                     />}
             />
             <Route path="/search/:query/:page?" component={VideoSearch} />

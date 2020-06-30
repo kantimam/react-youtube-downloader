@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { downloadMp3, getFileSize } from '../api/api';
+import { downloadMp3, downloadMp3Fast, getFileSize } from '../api/api';
 import CloseIcon from './CloseIcon';
 import Progress from './Progress';
 
@@ -14,20 +14,40 @@ const ConfirmDownloadMp3 = ({ match, video, history }) => {
     const [artist, setArtist] = useState("");
     const [song, setSong] = useState("");
 
+    const [allowFast, setFast]=useState(false);
+
     const download = (event) => {
         event.preventDefault();
         if(downloadState==="download"){
-            setDownload("loading")
-            const cover=video && video.thumbnail
-            return downloadMp3(
+            /* if file is more than 500mb download video directly and dont store it in memory before */
+            if(false){
+                /* download video directly */
+                return close();
+            }
+            
+            if(!allowFast){
+                setDownload("loading")
+                const cover=video && video.thumbnail
+                return downloadMp3(
+                    match.params.query, 
+                    match.params.itag, 
+                    name,
+                    metadata, 
+                    {title: song, artist: artist, cover: cover}, 
+                    (loaded)=>setProgress(loaded), 
+                    (state)=>setDownload(state)
+                );
+            } 
+            return downloadMp3Fast(
                 match.params.query, 
                 match.params.itag, 
                 name,
                 metadata, 
-                {title: song, artist: artist, cover: cover}, 
+                {title: song, artist: artist}, 
                 (loaded)=>setProgress(loaded), 
                 (state)=>setDownload(state)
             );
+
         }
         if(downloadState==="failed :("){
             return reset();
@@ -47,8 +67,10 @@ const ConfirmDownloadMp3 = ({ match, video, history }) => {
         reset();
         if (video) setName(video.title)
         getFileSize(match.params.query, match.params.itag).then(response => {
+            /* disabled button while waiting */
             setMeta(response.data)
         }).catch(e => {
+            /* enable when failed or succes */
             console.log(e);
             setError("failed to get videoinfo... you can try download anyway")
         });
@@ -85,7 +107,7 @@ const ConfirmDownloadMp3 = ({ match, video, history }) => {
                 
                 <input value={artist} placeholder="add an artist if you want" onChange={(e) => setArtist(e.target.value)} type="text" />
                 <input value={song} placeholder="add song name" onChange={(e) => setSong(e.target.value)} type="text" />
-                <input className="submit hoverShadow" value={downloadState} type="submit" />
+                <input className="submit hoverShadow" value={downloadState} type="submit" disabled={false}/>
             </form>
         </div>
     )

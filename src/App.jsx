@@ -15,14 +15,12 @@ const Downloader = lazy(() => import('./components/Downloader'));
 function App() {
   const [video, setVideo] = useState(null);
   const [appHeight, setHeight] = useState(window.innerHeight);
-  const resizeRef = useRef(null);
 
   useEffect(() => {
-    resizeRef.current = window.addEventListener('resize', () => {
-      setHeight(window.innerHeight);
-    })
+    const resizeFunction = () => setHeight(window.innerHeight);
+    window.addEventListener('resize', resizeFunction);
     return () => {
-      window.removeEventListener(resizeRef.current);
+      window.removeEventListener('resize', resizeFunction);
     };
   }, [])
 

@@ -20,17 +20,6 @@ const removeDouble = (a, b) => {
     return b;
 }
 
-/* const removeDoubleSelf=(a)=>{
-    const aLen=a.length;
-    for(let i=aLen; i>0; i--){
-        for(let j=i-1; j>=0; j--){
-            if(a[i].link===a[j].link){
-                a.splice(j, 1);
-            }
-        }
-    }
-    return a;
-} */
 
 const loadedPages = new Set()
 
@@ -65,7 +54,7 @@ const VideoSearch = ({ match, history, location }) => {
 
                 })
         }
-    }, [match.params.page, data.videos, prevPage, prevQuery, match.params.query])
+    }, [data.videos, match.params.page, match.params.query, prevPage, prevQuery])
 
 
     /* add another hook that fires when url didnt actually change but forceRefresh state is set so stale data can be replaced */

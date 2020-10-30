@@ -479,10 +479,26 @@ main {
   border-radius: 0.4rem;
 }
 
-#confirmModal {
+.modal {
   position: fixed;
-  top: 25vh;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.modalInner {
+  margin-top: 20vh;
 }
 
 .progressContainer {

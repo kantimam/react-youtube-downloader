@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { downloadVideo, getFileSize } from '../api/api';
 import CloseIcon from './CloseIcon';
+import Modal from './Modal';
 import Progress from './Progress';
 
 const ConfirmDownload = ({ match, video, history }) => {
@@ -13,31 +14,31 @@ const ConfirmDownload = ({ match, video, history }) => {
 
     const download = (event) => {
         event.preventDefault();
-        if(downloadState==="download"){
+        if (downloadState === "download") {
             /* if file is more than 500mb download video directly and dont store it in memory before */
-            if(false){
+            if (false) {
                 /* download video directly */
                 return close();
             }
             setDownload("loading")
-            return downloadVideo(match.params.query, match.params.itag, name, metadata, (loaded)=>setProgress(loaded), (state)=>setDownload(state))
+            return downloadVideo(match.params.query, match.params.itag, name, metadata, (loaded) => setProgress(loaded), (state) => setDownload(state))
         }
-        if(downloadState==="failed :("){
+        if (downloadState === "failed :(") {
             return reset();
         }
-        if(downloadState==="finished"){
+        if (downloadState === "finished") {
             return close();
         }
 
     }
-    const reset=()=>{
+    const reset = () => {
         setMeta(null);
         setProgress(0);
         setError("");
         setDownload("download");
     }
 
-    const close=()=>{
+    const close = () => {
         history.push(`/video/${match.params.query}`)
     }
 
@@ -55,15 +56,16 @@ const ConfirmDownload = ({ match, video, history }) => {
     if (!video) return <div id="confirmModal" className="centerAll"><h1>LOADING</h1></div>
 
     return (
-        <div id="confirmModal" className="centerAll">
-            <form id="customNameForm" onSubmit={download}>
+        <Modal>
+            <form id="customNameForm" className="modalInner" onSubmit={download}>
                 <CloseIcon onClick={close} />
                 <h1 className="centerText">CONFIRM DOWNLOAD</h1>
                 {metadata && <Progress size={metadata.size} progress={progress} />}
                 <input value={name} onChange={(e) => setName(e.target.value)} type="text" />
                 <input className="submit hoverShadow" value={downloadState} type="submit" />
             </form>
-        </div>
+        </Modal>
+
     )
 }
 

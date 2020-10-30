@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { downloadMp3, downloadMp3Fast, getFileSize } from '../api/api';
 import CloseIcon from './CloseIcon';
+import Modal from './Modal';
 import Progress from './Progress';
 
 const ConfirmDownloadMp3 = ({ match, video, history }) => {
@@ -14,49 +15,49 @@ const ConfirmDownloadMp3 = ({ match, video, history }) => {
     const [artist, setArtist] = useState("");
     const [song, setSong] = useState("");
 
-    const [allowFast, setFast]=useState(false);
+    const [allowFast, setFast] = useState(false);
 
     const download = (event) => {
         event.preventDefault();
-        if(downloadState==="download"){
+        if (downloadState === "download") {
             /* if file is more than 500mb download video directly and dont store it in memory before */
-            if(false){
+            if (false) {
                 /* download video directly */
                 return close();
             }
-            
-            if(!allowFast){
+
+            if (!allowFast) {
                 setDownload("loading")
-                const cover=video && video.thumbnail
+                const cover = video && video.thumbnail
                 return downloadMp3(
-                    match.params.query, 
-                    match.params.itag, 
+                    match.params.query,
+                    match.params.itag,
                     name,
-                    metadata, 
-                    {title: song, artist: artist, cover: cover}, 
-                    (loaded)=>setProgress(loaded), 
-                    (state)=>setDownload(state)
+                    metadata,
+                    { title: song, artist: artist, cover: cover },
+                    (loaded) => setProgress(loaded),
+                    (state) => setDownload(state)
                 );
-            } 
+            }
             return downloadMp3Fast(
-                match.params.query, 
-                match.params.itag, 
+                match.params.query,
+                match.params.itag,
                 name,
-                metadata, 
-                {title: song, artist: artist}, 
-                (loaded)=>setProgress(loaded), 
-                (state)=>setDownload(state)
+                metadata,
+                { title: song, artist: artist },
+                (loaded) => setProgress(loaded),
+                (state) => setDownload(state)
             );
 
         }
-        if(downloadState==="failed :("){
+        if (downloadState === "failed :(") {
             return reset();
         }
-        if(downloadState==="finished"){
+        if (downloadState === "finished") {
             return close();
         }
     }
-    const reset=()=>{
+    const reset = () => {
         setMeta(null);
         setProgress(0);
         setError("");
@@ -77,18 +78,18 @@ const ConfirmDownloadMp3 = ({ match, video, history }) => {
     }, [video, match.params.query, match.params.itag])
 
 
-    const generateMp3Tags=(event)=>{
+    const generateMp3Tags = (event) => {
         event.preventDefault();
-        if(video.title){
-            const parts=video.title.split("-");
-            if(parts.length===2){
+        if (video.title) {
+            const parts = video.title.split("-");
+            if (parts.length === 2) {
                 setArtist(parts[0].trim());
                 setSong(parts[1].trim());
             }
         }
     }
 
-    const close=()=>{
+    const close = () => {
         history.push(`/video/${match.params.query}`)
     }
 
@@ -96,20 +97,20 @@ const ConfirmDownloadMp3 = ({ match, video, history }) => {
     if (!video) return <div id="confirmModal" className="centerAll"><h1>LOADING</h1></div>
 
     return (
-        <div id="confirmModal" className="centerAll">
-            <form id="customNameForm" onSubmit={download}>
+        <Modal>
+            <form id="customNameForm" className="modalInner" onSubmit={download}>
                 <CloseIcon onClick={close} />
                 <h1 className="centerText">CONFIRM DOWNLOAD</h1>
                 {metadata && <Progress size={metadata.size} progress={progress} />}
                 <input value={name} onChange={(e) => setName(e.target.value)} type="text" />
-                
+
                 <button onClick={generateMp3Tags} id="autoMp3Button" className="marginAuto">AUTO GENERATE</button>
-                
+
                 <input value={artist} placeholder="add an artist if you want" onChange={(e) => setArtist(e.target.value)} type="text" />
                 <input value={song} placeholder="add song name" onChange={(e) => setSong(e.target.value)} type="text" />
-                <input className="submit hoverShadow" value={downloadState} type="submit" disabled={false}/>
+                <input className="submit hoverShadow" value={downloadState} type="submit" disabled={false} />
             </form>
-        </div>
+        </Modal>
     )
 }
 
